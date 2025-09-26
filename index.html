@@ -19,14 +19,12 @@
       animation: neonBG 20s ease infinite;
     }
 
-    /* Background Animation */
     @keyframes neonBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    /* Title Box */
     .title-box {
       display: inline-block;
       background: linear-gradient(135deg, #000, #222);
@@ -40,7 +38,6 @@
       box-shadow: 0 0 15px white, 0 0 25px #555;
     }
 
-    /* Title + Logo Wrapper */
     .hero {
       display: flex;
       flex-direction: column;
@@ -50,7 +47,6 @@
       margin-bottom: 30px;
     }
 
-    /* Rotating Logo with Neon Glow */
     .logo {
       width: 160px;
       margin-top: 15px;
@@ -68,7 +64,6 @@
       to   { filter: drop-shadow(0 0 28px #aaa); }
     }
 
-    /* Contract Address Box */
     .contract-box {
       background: #111;
       border: 1px solid white;
@@ -100,7 +95,6 @@
       color: white;
     }
 
-    /* Section Styling */
     section {
       max-width: 800px;
       margin: 40px auto;
@@ -119,7 +113,6 @@
       text-shadow: 0 0 6px white, 0 0 12px #777;
     }
 
-    /* Dex Chart */
     .chart-box {
       margin: 40px auto;
       max-width: 1000px;
@@ -135,7 +128,6 @@
       border: none;
     }
 
-    /* Footer */
     footer {
       margin: 40px 0;
       font-size: 0.8rem;
@@ -145,7 +137,6 @@
 </head>
 <body>
 
-  <!-- Title + Logo -->
   <div class="hero">
     <div class="title-box">$67COIN</div>
     <img src="https://i.ibb.co/8LCLky3m/square-1-1-1758378968536-removebg-preview.png" alt="$67 Logo" class="logo">
@@ -156,13 +147,15 @@
     <span id="ca-text">Coming Soon</span>
     <button class="copy-btn" onclick="copyCA()">Copy</button>
   </div>
-<!-- Buy Now Button -->
+
+  <!-- Buy Now Button -->
   <div style="margin-top: 15px;">
-    <a href="https://pump.fun/"target="_blank" 
+    <a id="buy-btn" href="#" target="_blank"
        style="display:inline-block; background:white; color:black; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold;">
        Buy Now
     </a>
   </div>
+
   <!-- Story -->
   <section>
     <h2>The Story of the Viral “67” Meme</h2>
@@ -192,92 +185,7 @@
     <p><b>Dev hold:</b> 0.5%</p>
     <p><b>Liquidity:</b> Burned 100%</p>
   </section>
-<!-- Contract Input + Buy Button + Chart -->
-<div style="margin:14px 0; text-align:center;">
-  <!-- Input + Button -->
-  <div style="margin-bottom:8px;">
-    <input id="contractInput" type="text" 
-      placeholder="Paste contract / Pump.fun / Dexscreener link" 
-      style="width:320px;max-width:86%;padding:8px;border-radius:6px;border:1px solid #444;background:#0b0b0b;color:#fff;" />
-    <button onclick="applyContract()" 
-      style="padding:8px 12px;border:none;border-radius:6px;background:#fff;color:#000;font-weight:bold;cursor:pointer;">
-      Set
-    </button>
-  </div>
 
-  <!-- Contract Display -->
-  <div id="contractBox" 
-    style="display:inline-flex;gap:8px;align-items:center;background:#111;padding:8px 12px;border-radius:8px;border:1px solid #333;color:#ddd;">
-    <a id="contractLink" href="#" target="_blank" 
-      style="color:#ddd;text-decoration:none;max-width:360px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
-      Coming Soon
-    </a>
-    <button onclick="copyCA()" 
-      style="padding:6px 10px;border:none;border-radius:6px;background:#fff;color:#000;font-weight:bold;cursor:pointer;">
-      Copy
-    </button>
-  </div>
-
-  <!-- Buy Now Button -->
-  <div style="margin-top:12px;">
-    <a id="buyNow" href="https://pump.fun" target="_blank" 
-      style="background:#fff;color:#000;padding:10px 22px;border-radius:8px;font-weight:bold;text-decoration:none;">
-      🚀 Buy Now
-    </a>
-  </div>
-</div>
-
-<!-- Dex Chart -->
-<div id="chartBox" style="max-width:1000px;margin:20px auto;border-radius:12px;overflow:hidden;border:1px solid #333;">
-  <iframe id="chartFrame" 
-    src="https://dexscreener.com/solana/So11111111111111111111111111111111111111112?embed=1&theme=dark&trades=0&info=0" 
-    width="100%" height="520" frameborder="0"></iframe>
-</div>
-
-<script>
-  function sanitize(v){ return (v||'').trim(); }
-
-  function applyContract(){
-    const raw = sanitize(document.getElementById('contractInput').value);
-    if(!raw){ alert('Paste contract or URL'); return; }
-
-    const contractLink = document.getElementById('contractLink');
-    const chartFrame = document.getElementById('chartFrame');
-    const buyNow = document.getElementById('buyNow');
-
-    // Pump.fun link
-    if(raw.includes('pump.fun')){
-      buyNow.href = raw;
-      contractLink.href = raw;
-      contractLink.innerText = raw;
-    }
-
-    // Dexscreener slug (e.g. HJjwNxQY...)
-    const looksLikeSlug = /^[0-9A-Za-z\-_]{8,80}$/.test(raw) && !raw.startsWith('http');
-    if(looksLikeSlug){
-      chartFrame.src = 'https://dexscreener.com/solana/' + raw + '?embed=1&theme=dark&trades=0&info=0';
-      contractLink.href = 'https://dexscreener.com/solana/' + raw;
-      contractLink.innerText = raw;
-      buyNow.href = 'https://pump.fun/coin/' + raw;
-    }
-
-    // Contract Address
-    if(raw.startsWith('0x') || raw.length>=30){
-      chartFrame.src = 'https://dexscreener.com/search?q=' + raw;
-      contractLink.href = chartFrame.src;
-      contractLink.innerText = raw;
-      buyNow.href = 'https://pump.fun/coin/' + raw;
-    }
-  }
-
-  function copyCA(){
-    const t = document.getElementById('contractLink').innerText.trim();
-    if(!t || t.includes('Coming')){
-      alert('Nothing to copy yet.'); return;
-    }
-    navigator.clipboard.writeText(t).then(()=> alert('Copied: ' + t));
-  }
-  </script>
   <!-- Roadmap -->
   <section>
     <h2>Roadmap</h2>
@@ -289,7 +197,7 @@
 
   <!-- Dex Chart -->
   <div class="chart-box">
-    <iframe src="https://dexscreener.com/?embed=1&theme=dark&trades=0&info=0"></iframe>
+    <iframe id="dex-chart" src="" width="100%" height="500" frameborder="0"></iframe>
   </div>
 
   <footer>
@@ -297,10 +205,25 @@
   </footer>
 
   <script>
+    // Sirf yahan CA change karna hai
+    const CONTRACT_ADDRESS = "YOUR_CONTRACT_ADDRESS_HERE";
+
+    // Contract Address Box
+    document.getElementById("ca-text").innerText = CONTRACT_ADDRESS;
+
+    // Buy Button Link
+    document.getElementById("buy-btn").href =
+      "https://pump.fun/coin/" + CONTRACT_ADDRESS;
+
+    // Dex Chart
+    document.getElementById("dex-chart").src =
+      "https://dexscreener.com/solana/" + CONTRACT_ADDRESS +
+      "?embed=1&theme=dark&trades=0&info=0";
+
+    // Copy Function
     function copyCA() {
-      const caText = document.getElementById("ca-text").innerText;
-      navigator.clipboard.writeText(caText).then(() => {
-        alert("Contract Address copied: " + caText);
+      navigator.clipboard.writeText(CONTRACT_ADDRESS).then(() => {
+        alert("Contract Address copied: " + CONTRACT_ADDRESS);
       });
     }
   </script>
