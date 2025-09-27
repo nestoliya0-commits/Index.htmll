@@ -78,7 +78,14 @@
       max-width: 90%;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     }
-
+.contract-box span {
+  display: inline-block;
+  max-width: 200px; /* address ko box ke andar limit karega */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
     .copy-btn {
       background: white;
       color: black;
