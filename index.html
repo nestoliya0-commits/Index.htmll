@@ -2,41 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MEME-BUILDER PRO | Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEME-OS ULTRA | Advanced Builder</title>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
     <style>
-        :root { --p: #00ffa3; --bg: #0a0b10; --s: #161b22; --border: #30363d; }
+        :root { --p: #00ffa3; --bg: #0d1117; --s: #161b22; --border: #30363d; }
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: #c9d1d9; display: flex; height: 100vh; overflow: hidden; }
-
-        /* Left Sidebar: Settings */
-        .sidebar { width: 380px; background: var(--s); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; }
+        .sidebar { width: 420px; background: var(--s); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; padding-bottom: 100px; }
         .tab { padding: 20px; border-bottom: 1px solid var(--border); }
-        h3 { font-size: 0.8rem; color: var(--p); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-
-        input, textarea, select { width: 100%; background: #0d1117; border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 6px; margin-bottom: 12px; font-size: 0.85rem; }
-        .upload-btn { background: #21262d; border: 1px dashed #8b949e; padding: 10px; text-align: center; cursor: pointer; border-radius: 6px; margin-bottom: 10px; font-size: 0.8rem; }
-        .upload-btn:hover { border-color: var(--p); color: var(--p); }
-
-        /* Main Preview Area */
-        .main-view { flex-grow: 1; display: flex; flex-direction: column; background: #010409; }
-        .top-nav { height: 60px; background: var(--s); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 30px; }
-        
-        /* The Website Canvas */
-        #site-preview { 
-            width: 90%; max-width: 1000px; margin: 30px auto; background: #fff; 
-            height: 100%; border-radius: 12px 12px 0 0; overflow-y: auto; box-shadow: 0 0 40px rgba(0,0,0,0.5);
-            background-size: cover !important; background-position: center !important;
-        }
-
-        /* Buttons */
-        .btn { padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; font-size: 0.85rem; }
-        .btn-p { background: var(--p); color: #000; }
-        .btn-s { background: #30363d; color: #fff; margin-right: 10px; }
-
-        /* ID Modal */
-        #auth-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; display: flex; align-items: center; justify-content: center; }
-        .auth-card { background: var(--s); padding: 40px; border-radius: 12px; width: 350px; text-align: center; border: 1px solid var(--border); }
-
-        #wallet-status { font-size: 0.7rem; color: var(--p); }
+        .tool-title { font-size: 0.7rem; color: var(--p); font-weight: 900; letter-spacing: 1.5px; margin-bottom: 15px; display: block; }
+        input, textarea { width: 100%; background: #010409; border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 6px; margin-bottom: 8px; font-size: 0.8rem; box-sizing: border-box; }
+        .btn-add { background: transparent; border: 1px solid var(--p); color: var(--p); padding: 5px 10px; font-size: 0.7rem; border-radius: 4px; cursor: pointer; margin-bottom: 10px; }
+        .preview-zone { flex-grow: 1; background: #010409; display: flex; flex-direction: column; position: relative; }
+        #web-canvas { width: 90%; max-width: 900px; margin: 20px auto; background: #fff; flex-grow: 1; border-radius: 15px; overflow-y: auto; box-shadow: 0 40px 100px rgba(0,0,0,0.5); background-size: cover !important; }
+        .btn-p { background: var(--p); color: #000; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; width: 100%; }
+        #auth-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; display: flex; align-items: center; justify-content: center; }
+        .auth-card { background: var(--s); padding: 40px; border-radius: 15px; width: 320px; text-align: center; border: 1px solid var(--border); }
     </style>
 </head>
 <body>
@@ -44,131 +25,109 @@
     <div id="auth-modal">
         <div class="auth-card">
             <h2 style="color:var(--p)">MEME-OS LOGIN</h2>
-            <p style="font-size: 0.8rem; margin-bottom: 20px;">Create your Developer ID to start</p>
-            <input type="text" id="userId" placeholder="Choose Developer ID">
-            <input type="password" placeholder="Password">
-            <button class="btn btn-p" style="width:100%" onclick="closeAuth()">CREATE ACCOUNT</button>
+            <input type="text" id="userId" placeholder="Developer Name">
+            <button class="btn-p" style="margin-top:15px" onclick="login()">START BUILDING</button>
         </div>
     </div>
 
     <div class="sidebar">
+        <div class="tab" style="background:#000"><h2 style="color:var(--p);margin:0">MEME-OS ULTRA</h2></div>
+        
         <div class="tab">
-            <h2 style="margin:0; color:#fff; font-size: 1.2rem;">MEMEBUILDER <span style="color:var(--p)">PRO</span></h2>
-            <p id="wallet-status">Wallet: Not Connected</p>
-        </div>
-
-        <div class="tab">
-            <h3>Identity & Images</h3>
-            <input type="text" id="cName" placeholder="Coin Name" value="BULLISH CAT" oninput="render()">
-            
-            <label class="upload-btn">
-                Upload Logo Image
-                <input type="file" hidden accept="image/*" onchange="handleImg(this, 'logo')">
-            </label>
-            
-            <label class="upload-btn">
-                Upload Background Image
-                <input type="file" hidden accept="image/*" onchange="handleImg(this, 'bg')">
-            </label>
+            <span class="tool-title">1. BRANDING</span>
+            <input type="text" id="cName" value="PEPE GOLD" oninput="render()">
+            <input type="file" id="logoInp" onchange="handleImg(this, 'logo')">
+            <input type="file" id="bgInp" onchange="handleImg(this, 'bg')">
         </div>
 
         <div class="tab">
-            <h3>Contract & Socials</h3>
-            <input type="text" id="cCA" placeholder="Contract Address" oninput="render()">
-            <input type="text" id="cTG" placeholder="Telegram Link" oninput="render()">
-            <input type="text" id="cX" placeholder="Twitter Link" oninput="render()">
+            <span class="tool-title">2. CONTRACT ADDRESS</span>
+            <input type="text" id="cCA" placeholder="Paste CA Here" oninput="render()">
         </div>
 
-        <div class="tab" style="flex-grow:1">
-            <h3>About Token</h3>
-            <textarea id="cDesc" rows="4" placeholder="Describe your moonshot..." oninput="render()">The most viral cat on Solana. Hold and win.</textarea>
+        <div class="tab" id="token-inputs">
+            <span class="tool-title">3. TOKENOMICS</span>
+            <div class="t-row"><input type="text" class="t-val" value="Total Supply: 1 Billion" oninput="render()"></div>
+            <div class="t-row"><input type="text" class="t-val" value="LP: 100% Burned" oninput="render()"></div>
+            <button class="btn-add" onclick="addInput('token-inputs', 'New Tokenomics Point')">+ ADD MORE</button>
         </div>
 
-        <div style="padding: 20px; border-top: 1px solid var(--border)">
-            <button class="btn btn-p" style="width:100%; padding:15px;" onclick="deploy()">PUBLISH SITE (0.1 SOL)</button>
+        <div class="tab" id="roadmap-inputs">
+            <span class="tool-title">4. ROADMAP</span>
+            <div class="r-row"><input type="text" class="r-val" value="Phase 1: Launch" oninput="render()"></div>
+            <div class="r-row"><input type="text" class="r-val" value="Phase 2: Dex Update" oninput="render()"></div>
+            <button class="btn-add" onclick="addInput('roadmap-inputs', 'New Roadmap Phase')">+ ADD MORE</button>
         </div>
+
+        <div style="padding:20px"><button class="btn-p" onclick="pay()">DEPLOY & DOWNLOAD (0.05 SOL)</button></div>
     </div>
 
-    <div class="main-view">
-        <div class="top-nav">
-            <div id="user-display">Dev: <b>Guest</b></div>
-            <div>
-                <button class="btn btn-s" onclick="window.solana.connect()">CONNECT WALLET</button>
-                <button class="btn btn-p">PREVIEW LINK</button>
-            </div>
-        </div>
-
-        <div id="site-preview">
-            <div id="web-content"></div>
-        </div>
+    <div class="preview-zone">
+        <div id="web-canvas"><div id="render-target"></div></div>
     </div>
 
     <script>
-        let logoSrc = "";
-        let bgSrc = "";
-
-        // 1. Auth Simulation
-        function closeAuth() {
-            const id = document.getElementById('userId').value;
-            if(!id) return alert("Please enter an ID");
-            document.getElementById('user-display').innerHTML = `Dev: <b>${id}</b>`;
-            document.getElementById('auth-modal').style.display = 'none';
+        let logo = "", bg = "";
+        function login() { document.getElementById('auth-modal').style.display='none'; render(); }
+        
+        function addInput(parentId, placeholder) {
+            const div = document.createElement('div');
+            const cls = parentId === 'token-inputs' ? 't-val' : 'r-val';
+            div.innerHTML = `<input type="text" class="${cls}" placeholder="${placeholder}" oninput="render()">`;
+            document.getElementById(parentId).insertBefore(div, document.getElementById(parentId).lastElementChild);
+            render();
         }
 
-        // 2. Image Upload Logic (Live Preview)
         function handleImg(input, type) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    if(type === 'logo') logoSrc = e.target.result;
-                    if(type === 'bg') bgSrc = e.target.result;
-                    render();
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
+            const reader = new FileReader();
+            reader.onload = (e) => { if(type==='logo') logo=e.target.result; else bg=e.target.result; render(); };
+            reader.readAsDataURL(input.files[0]);
         }
 
-        // 3. The Live Renderer
         function render() {
-            const name = document.getElementById('cName').value;
-            const ca = document.getElementById('cCA').value || "0x000000000000000000000";
-            const desc = document.getElementById('cDesc').value;
-            const preview = document.getElementById('site-preview');
+            const canvas = document.getElementById('web-canvas');
+            if(bg) canvas.style.background = `url(${bg})`;
+            
+            const tokens = Array.from(document.querySelectorAll('.t-val')).map(i => `<div style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1)">${i.value}</div>`).join('');
+            const roadmaps = Array.from(document.querySelectorAll('.r-val')).map(i => `<div style="padding:10px; border-left:3px solid var(--p); margin-bottom:10px; background:rgba(255,255,255,0.05)">${i.value}</div>`).join('');
 
-            // Apply Background
-            if(bgSrc) preview.style.background = `url(${bgSrc})`;
-
-            document.getElementById('web-content').innerHTML = `
-                <div style="background:rgba(255,255,255,0.8); min-height:100%; color:#000; padding:40px; text-align:center; backdrop-filter:blur(5px)">
-                    <img src="${logoSrc || 'https://via.placeholder.com/100'}" style="width:120px; border-radius:50%; box-shadow:0 10px 20px rgba(0,0,0,0.2)">
-                    <h1 style="font-size:3rem; margin:20px 0;">${name}</h1>
-                    <p style="font-size:1.2rem; max-width:600px; margin:auto;">${desc}</p>
+            document.getElementById('render-target').innerHTML = `
+                <div style="background:rgba(0,0,0,0.8); min-height:100%; color:#fff; backdrop-filter:blur(10px); padding:40px; text-align:center;">
+                    <img src="${logo || 'https://via.placeholder.com/100'}" style="width:120px; border-radius:50%; border:3px solid var(--p)">
+                    <h1 style="font-size:3.5rem; margin:10px 0;">${document.getElementById('cName').value}</h1>
                     
-                    <div style="margin:30px auto; padding:15px; background:#000; color:#00ffa3; border-radius:8px; width:fit-content; font-family:monospace;">
-                        CA: ${ca}
+                    <div style="margin:30px 0; background:#00ffa3; color:#000; padding:15px; border-radius:10px; font-weight:bold; font-family:monospace; font-size:1.1rem; box-shadow: 0 0 20px var(--p)">
+                        CONTRACT: ${document.getElementById('cCA').value || 'TBA'}
+                    </div>
+
+                    <div style="text-align:left; max-width:600px; margin:auto;">
+                        <h2 style="color:var(--p); border-bottom:1px solid var(--p); padding-bottom:10px;">TOKENOMICS</h2>
+                        <div style="margin-bottom:40px;">${tokens}</div>
+
+                        <h2 style="color:var(--p); border-bottom:1px solid var(--p); padding-bottom:10px;">ROADMAP</h2>
+                        <div>${roadmaps}</div>
                     </div>
                     
-                    <div style="display:flex; justify-content:center; gap:20px;">
-                        <button style="background:#00ffa3; border:none; padding:15px 30px; font-weight:bold; cursor:pointer">BUY ON PUMP.FUN</button>
-                        <button style="background:#000; color:#fff; border:none; padding:15px 30px; font-weight:bold; cursor:pointer">TELEGRAM</button>
-                    </div>
+                    <button style="margin-top:40px; background:var(--p); padding:15px 40px; border:none; border-radius:50px; font-weight:bold; font-size:1.2rem;">BUY ON PUMP.FUN</button>
                 </div>
             `;
         }
 
-        // 4. Deployment/Payment Simulation
-        async function deploy() {
-            if(!window.solana) return alert("Please install Phantom Wallet");
-            try {
-                const resp = await window.solana.connect();
-                document.getElementById('wallet-status').innerText = "Wallet: " + resp.publicKey.toString().substring(0,8) + "...";
-                alert("Payment Request: 0.1 SOL to [Your_Wallet_Address]. Confirm in Phantom?");
-            } catch(e) {
-                alert("Connection Cancelled");
-            }
+        async function pay() {
+            alert("Payment of 0.05 SOL triggered... (Blockchain Simulation)");
+            // Add real solanaWeb3 payment logic here as per previous step
+            download();
         }
 
-        render();
+        function download() {
+            const content = document.getElementById('render-target').innerHTML;
+            const style = `<style>:root{--p:#00ffa3;}body{margin:0;background:#000;font-family:sans-serif;}</style>`;
+            const blob = new Blob([`<html><head>${style}</head><body>${content}</body></html>`], {type:'text/html'});
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = "index.html";
+            a.click();
+        }
     </script>
 </body>
 </html>
