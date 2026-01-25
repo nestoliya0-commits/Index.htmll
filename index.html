@@ -3,79 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEME-OS ULTRA | Advanced Builder</title>
+    <title>MEME-OS ULTIMATE | 60+ Fonts Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alumni+Sans+Pinstripe:ital@1&family=Anton&family=Bangers&family=Bebas+Neue&family=Black+Ops+One&family=Bungee+Shade&family=Caveat:wght@700&family=Chakra+Petch:wght@700&family=Cinzel:wght@900&family=Comfortaa:wght@700&family=Creepster&family=Dancing+Script:wght@700&family=DotGothic16&family=Eater&family=Exo+2:wght@900&family=Fascinate+Inline&family=Faster+One&family=Fredoka+One&family=Frijole&family=Gloria+Hallelujah&family=Goldman:wght@700&family=Gugi&family=Handjet:wght@700&family=Iceberg&family=Inter:wght@400;900&family=JetBrains+Mono&family=Joti+One&family=Kanit:wght@900&family=Kenia&family=Kumar+One&family=Lalezar&family=Lobster&family=Luckiest+Guy&family=Major+Mono+Display&family=Michroma&family=Monoton&family=Nabla&family=Nosifer&family=Orbitron:wght@900&family=Oswald:wght@700&family=Pacifico&family=Permanent+Marker&family=Phudu:wght@900&family=Playfair+Display:ital,wght@1,900&family=Press+Start+2P&family=Quantico:wght@700&family=Righteous&family=Russo+One&family=Saira+Stencil+One&family=Shadows+Into+Light&family=Silkscreen&family=Special+Elite&family=Syncopate:wght@700&family=Titan+One&family=Tomorrow:wght@900&family=Unbounded:wght@900&family=VT323&family=Wallpoet&family=Zilla+Slab+Highlight:wght@700&display=swap" rel="stylesheet">
+    
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    
     <style>
         :root { --p: #00ffa3; --bg: #0d1117; --s: #161b22; --border: #30363d; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: #c9d1d9; display: flex; height: 100vh; overflow: hidden; }
-        .sidebar { width: 420px; background: var(--s); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; padding-bottom: 100px; }
-        .tab { padding: 20px; border-bottom: 1px solid var(--border); }
-        .tool-title { font-size: 0.7rem; color: var(--p); font-weight: 900; letter-spacing: 1.5px; margin-bottom: 15px; display: block; }
-        input, textarea { width: 100%; background: #010409; border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 6px; margin-bottom: 8px; font-size: 0.8rem; box-sizing: border-box; }
-        .btn-add { background: transparent; border: 1px solid var(--p); color: var(--p); padding: 5px 10px; font-size: 0.7rem; border-radius: 4px; cursor: pointer; margin-bottom: 10px; }
-        .preview-zone { flex-grow: 1; background: #010409; display: flex; flex-direction: column; position: relative; }
-        #web-canvas { width: 90%; max-width: 900px; margin: 20px auto; background: #fff; flex-grow: 1; border-radius: 15px; overflow-y: auto; box-shadow: 0 40px 100px rgba(0,0,0,0.5); background-size: cover !important; }
-        .btn-p { background: var(--p); color: #000; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; width: 100%; }
-        #auth-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; display: flex; align-items: center; justify-content: center; }
-        .auth-card { background: var(--s); padding: 40px; border-radius: 15px; width: 320px; text-align: center; border: 1px solid var(--border); }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: #c9d1d9; display: flex; height: 100vh; overflow: hidden; }
+        .sidebar { width: 450px; background: var(--s); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; padding-bottom: 50px; }
+        .tab { padding: 15px 25px; border-bottom: 1px solid var(--border); }
+        .tool-title { font-size: 0.65rem; color: var(--p); font-weight: 900; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+        input, select { width: 100%; background: #010409; border: 1px solid var(--border); color: #fff; padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 0.85rem; }
+        .preview-zone { flex-grow: 1; background: #000; display: flex; flex-direction: column; position: relative; }
+        .top-nav { height: 60px; background: var(--s); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 25px; }
+        #web-canvas { width: 95%; max-width: 850px; margin: 20px auto; background: #222; flex-grow: 1; border-radius: 15px; overflow-y: auto; box-shadow: 0 40px 100px rgba(0,0,0,0.7); }
+        .btn-p { background: var(--p); color: #000; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; border: none; width: 100%; font-size: 1rem; box-shadow: 0 0 15px rgba(0,255,163,0.3); }
+        .status-dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+        .connected { background: #00ffa3; box-shadow: 0 0 10px #00ffa3; }
+        .disconnected { background: #ff4444; }
     </style>
 </head>
 <body>
 
-    <div id="auth-modal">
-        <div class="auth-card">
-            <h2 style="color:var(--p)">MEME-OS LOGIN</h2>
-            <input type="text" id="userId" placeholder="Developer Name">
-            <button class="btn-p" style="margin-top:15px" onclick="login()">START BUILDING</button>
-        </div>
-    </div>
-
     <div class="sidebar">
-        <div class="tab" style="background:#000"><h2 style="color:var(--p);margin:0">MEME-OS ULTRA</h2></div>
+        <div class="tab" style="background:#000; display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="color:var(--p); margin:0; font-size: 1.1rem;">MEME-OS ULTIMATE</h2>
+            <div id="wallet-indicator" style="font-size: 0.7rem;"><span class="status-dot disconnected"></span> Not Connected</div>
+        </div>
         
         <div class="tab">
-            <span class="tool-title">1. BRANDING</span>
-            <input type="text" id="cName" value="PEPE GOLD" oninput="render()">
-            <input type="file" id="logoInp" onchange="handleImg(this, 'logo')">
-            <input type="file" id="bgInp" onchange="handleImg(this, 'bg')">
+            <span class="tool-title">CHOOSE FROM 60+ FONTS</span>
+            <select id="fontSelect" onchange="render()" style="font-size: 1rem; border: 2px solid var(--p);">
+                <optgroup label="Popular">
+                    <option value="'Inter'">Default Inter</option>
+                    <option value="'Bangers'">Bangers (Meme Classic)</option>
+                    <option value="'Luckiest Guy'">Luckiest Guy</option>
+                    <option value="'Permanent Marker'">Marker Pen</option>
+                </optgroup>
+                <optgroup label="Gaming & Retro">
+                    <option value="'Press Start 2P'">8-Bit Gaming</option>
+                    <option value="'Silkscreen'">Silkscreen</option>
+                    <option value="'VT323'">Cyber Cafe</option>
+                </optgroup>
+                <optgroup label="Horror & Bold">
+                    <option value="'Creepster'">Horror Creepster</option>
+                    <option value="'Nosifer'">Dripping Blood</option>
+                    <option value="'Eater'">Eater</option>
+                </optgroup>
+                <optgroup label="Futuristic">
+                    <option value="'Orbitron'">Orbitron Tech</option>
+                    <option value="'Syncopate'">Minimal Tech</option>
+                    <option value="'Chakra Petch'">Cyberpunk</option>
+                </optgroup>
+                <optgroup label="Fancy & Artistic">
+                    <option value="'Lobster'">Lobster Cursive</option>
+                    <option value="'Pacifico'">Pacifico Beach</option>
+                    <option value="'Monoton'">Neon Retro</option>
+                    <option value="'Nabla'">3D Nabla</option>
+                </optgroup>
+                </select>
         </div>
 
         <div class="tab">
-            <span class="tool-title">2. CONTRACT ADDRESS</span>
-            <input type="text" id="cCA" placeholder="Paste CA Here" oninput="render()">
+            <span class="tool-title">IDENTITY</span>
+            <input type="text" id="cName" value="PEPE KING" oninput="render()">
+            <input type="file" onchange="handleImg(this, 'logo')">
+            <input type="file" onchange="handleImg(this, 'bg')">
+        </div>
+
+        <div class="tab">
+            <span class="tool-title">BLOCKCHAIN INFO</span>
+            <input type="text" id="cCA" placeholder="Paste Contract Address" oninput="render()">
+            <input type="text" id="cTG" placeholder="Telegram Link" oninput="render()">
+            <input type="text" id="cX" placeholder="Twitter Link" oninput="render()">
         </div>
 
         <div class="tab" id="token-inputs">
-            <span class="tool-title">3. TOKENOMICS</span>
-            <div class="t-row"><input type="text" class="t-val" value="Total Supply: 1 Billion" oninput="render()"></div>
-            <div class="t-row"><input type="text" class="t-val" value="LP: 100% Burned" oninput="render()"></div>
-            <button class="btn-add" onclick="addInput('token-inputs', 'New Tokenomics Point')">+ ADD MORE</button>
+            <span class="tool-title">TOKENOMICS</span>
+            <input type="text" class="t-val" value="Supply: 1,000,000,000" oninput="render()">
+            <button onclick="addInput('token-inputs')" style="background:none; border:1px dashed var(--p); color:var(--p); width:100%; cursor:pointer;">+ Add Detail</button>
         </div>
 
         <div class="tab" id="roadmap-inputs">
-            <span class="tool-title">4. ROADMAP</span>
-            <div class="r-row"><input type="text" class="r-val" value="Phase 1: Launch" oninput="render()"></div>
-            <div class="r-row"><input type="text" class="r-val" value="Phase 2: Dex Update" oninput="render()"></div>
-            <button class="btn-add" onclick="addInput('roadmap-inputs', 'New Roadmap Phase')">+ ADD MORE</button>
+            <span class="tool-title">ROADMAP</span>
+            <input type="text" class="r-val" value="Stage 1: Viral Marketing" oninput="render()">
+            <button onclick="addInput('roadmap-inputs')" style="background:none; border:1px dashed var(--p); color:var(--p); width:100%; cursor:pointer;">+ Add Phase</button>
         </div>
 
-        <div style="padding:20px"><button class="btn-p" onclick="pay()">DEPLOY & DOWNLOAD (0.05 SOL)</button></div>
+        <div style="padding: 25px;">
+            <button class="btn-p" onclick="processPayment()">PAY 0.05 SOL & DOWNLOAD</button>
+        </div>
     </div>
 
     <div class="preview-zone">
+        <div class="top-nav">
+            <button onclick="connectWallet()" style="background:var(--s); color:white; border:1px solid var(--border); padding:8px 15px; border-radius:5px; cursor:pointer;">CONNECT PHANTOM</button>
+            <div id="wallet-address" style="font-size: 0.8rem; color: var(--p);"></div>
+        </div>
         <div id="web-canvas"><div id="render-target"></div></div>
     </div>
 
     <script>
-        let logo = "", bg = "";
-        function login() { document.getElementById('auth-modal').style.display='none'; render(); }
-        
-        function addInput(parentId, placeholder) {
-            const div = document.createElement('div');
-            const cls = parentId === 'token-inputs' ? 't-val' : 'r-val';
-            div.innerHTML = `<input type="text" class="${cls}" placeholder="${placeholder}" oninput="render()">`;
-            document.getElementById(parentId).insertBefore(div, document.getElementById(parentId).lastElementChild);
-            render();
+        let logo = "", bg = "", userPubKey = null;
+        const RECEIVER_WALLET = "YOUR_SOLANA_WALLET_HERE";
+
+        async function connectWallet() {
+            if (window.solana) {
+                try {
+                    const resp = await window.solana.connect();
+                    userPubKey = resp.publicKey;
+                    document.getElementById('wallet-address').innerText = userPubKey.toString().substring(0,10) + "...";
+                    document.getElementById('wallet-indicator').innerHTML = '<span class="status-dot connected"></span> Connected';
+                } catch (err) { console.log(err); }
+            } else { alert("Please Install Phantom Wallet!"); }
+        }
+
+        function addInput(id) {
+            const cls = id === 'token-inputs' ? 't-val' : 'r-val';
+            const input = document.createElement('input');
+            input.className = cls;
+            input.placeholder = "Enter info...";
+            input.oninput = render;
+            document.getElementById(id).insertBefore(input, document.getElementById(id).lastChild);
         }
 
         function handleImg(input, type) {
@@ -85,49 +135,73 @@
         }
 
         function render() {
+            const font = document.getElementById('fontSelect').value;
             const canvas = document.getElementById('web-canvas');
-            if(bg) canvas.style.background = `url(${bg})`;
+            if(bg) canvas.style.background = `url(${bg}) center/cover fixed`;
             
-            const tokens = Array.from(document.querySelectorAll('.t-val')).map(i => `<div style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1)">${i.value}</div>`).join('');
-            const roadmaps = Array.from(document.querySelectorAll('.r-val')).map(i => `<div style="padding:10px; border-left:3px solid var(--p); margin-bottom:10px; background:rgba(255,255,255,0.05)">${i.value}</div>`).join('');
+            const tokens = Array.from(document.querySelectorAll('.t-val')).map(i => `<div style="padding:15px; border-bottom:1px solid rgba(255,255,255,0.1)">${i.value}</div>`).join('');
+            const roads = Array.from(document.querySelectorAll('.r-val')).map(i => `<div style="padding:20px; border-left:5px solid var(--p); background:rgba(255,255,255,0.05); margin-bottom:15px; border-radius:0 10px 10px 0;">${i.value}</div>`).join('');
 
             document.getElementById('render-target').innerHTML = `
-                <div style="background:rgba(0,0,0,0.8); min-height:100%; color:#fff; backdrop-filter:blur(10px); padding:40px; text-align:center;">
-                    <img src="${logo || 'https://via.placeholder.com/100'}" style="width:120px; border-radius:50%; border:3px solid var(--p)">
-                    <h1 style="font-size:3.5rem; margin:10px 0;">${document.getElementById('cName').value}</h1>
+                <div style="background:rgba(0,0,0,0.85); min-height:100%; color:#fff; backdrop-filter:blur(12px); padding:80px 20px; text-align:center; font-family:${font};">
+                    <img src="${logo || 'https://via.placeholder.com/150'}" style="width:150px; border-radius:50%; border:5px solid var(--p); margin-bottom:20px; box-shadow: 0 0 30px var(--p);">
+                    <h1 style="font-size:5rem; margin:0; line-height:1;">${document.getElementById('cName').value}</h1>
                     
-                    <div style="margin:30px 0; background:#00ffa3; color:#000; padding:15px; border-radius:10px; font-weight:bold; font-family:monospace; font-size:1.1rem; box-shadow: 0 0 20px var(--p)">
-                        CONTRACT: ${document.getElementById('cCA').value || 'TBA'}
+                    <div style="margin:40px auto; background:#00ffa3; color:#000; padding:20px; border-radius:15px; font-weight:900; font-size:1.2rem; max-width:550px; word-break:break-all; box-shadow: 0 10px 40px rgba(0,255,163,0.3);">
+                        CA: ${document.getElementById('cCA').value || 'TBA'}
                     </div>
 
-                    <div style="text-align:left; max-width:600px; margin:auto;">
-                        <h2 style="color:var(--p); border-bottom:1px solid var(--p); padding-bottom:10px;">TOKENOMICS</h2>
-                        <div style="margin-bottom:40px;">${tokens}</div>
+                    <div style="text-align:left; max-width:650px; margin:60px auto;">
+                        <h2 style="color:var(--p); font-size:2.5rem; text-decoration: underline;">TOKENOMICS</h2>
+                        <div style="margin-bottom:60px; font-size:1.2rem;">${tokens}</div>
 
-                        <h2 style="color:var(--p); border-bottom:1px solid var(--p); padding-bottom:10px;">ROADMAP</h2>
-                        <div>${roadmaps}</div>
+                        <h2 style="color:var(--p); font-size:2.5rem; text-decoration: underline;">ROADMAP</h2>
+                        <div style="font-size:1.2rem;">${roads}</div>
+                    </div>
+
+                    <div style="display:flex; justify-content:center; gap:25px; margin-top:50px;">
+                        <a href="${document.getElementById('cTG').value}" style="background:#0088cc; color:white; padding:18px 40px; text-decoration:none; border-radius:10px; font-weight:bold;">TELEGRAM</a>
+                        <a href="${document.getElementById('cX').value}" style="background:#000; color:white; border:1px solid #444; padding:18px 40px; text-decoration:none; border-radius:10px; font-weight:bold;">TWITTER (X)</a>
                     </div>
                     
-                    <button style="margin-top:40px; background:var(--p); padding:15px 40px; border:none; border-radius:50px; font-weight:bold; font-size:1.2rem;">BUY ON PUMP.FUN</button>
+                    <button style="margin-top:80px; background:var(--p); color:#000; padding:25px 80px; border:none; border-radius:50px; font-weight:900; font-size:1.8rem; cursor:pointer; font-family:${font}; box-shadow: 0 0 40px var(--p);">BUY ON PUMP.FUN</button>
                 </div>
             `;
         }
 
-        async function pay() {
-            alert("Payment of 0.05 SOL triggered... (Blockchain Simulation)");
-            // Add real solanaWeb3 payment logic here as per previous step
-            download();
+        async function processPayment() {
+            if(!userPubKey) return alert("Please Connect Phantom Wallet First!");
+            const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl("mainnet-beta"));
+            const transaction = new solanaWeb3.Transaction().add(
+                solanaWeb3.SystemProgram.transfer({
+                    fromPubkey: userPubKey,
+                    toPubkey: new solanaWeb3.PublicKey(RECEIVER_WALLET),
+                    lamports: 0.05 * solanaWeb3.LAMPORTS_PER_SOL
+                })
+            );
+            try {
+                const { blockhash } = await connection.getLatestBlockhash();
+                transaction.recentBlockhash = blockhash;
+                transaction.feePayer = userPubKey;
+                const signed = await window.solana.signAndSendTransaction(transaction);
+                alert("Verifying Transaction... Please wait.");
+                await connection.confirmTransaction(signed.signature);
+                alert("Success! 0.05 SOL Received.");
+                downloadSite();
+            } catch (err) { alert("Transaction Failed!"); }
         }
 
-        function download() {
+        function downloadSite() {
             const content = document.getElementById('render-target').innerHTML;
-            const style = `<style>:root{--p:#00ffa3;}body{margin:0;background:#000;font-family:sans-serif;}</style>`;
-            const blob = new Blob([`<html><head>${style}</head><body>${content}</body></html>`], {type:'text/html'});
+            const fontLink = document.querySelector('link[href*="fonts.googleapis.com"]').outerHTML;
+            const finalHtml = `<!DOCTYPE html><html><head>${fontLink}<style>body{margin:0;background:#000;--p:#00ffa3;}</style></head><body>${content}</body></html>`;
+            const blob = new Blob([finalHtml], {type:'text/html'});
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = "index.html";
             a.click();
         }
+        render();
     </script>
 </body>
 </html>
