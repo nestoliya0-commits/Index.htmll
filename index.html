@@ -1,250 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>$67Coin</title>
+    <meta charset="UTF-8">
+    <title>MEME-BUILDER PRO | Dashboard</title>
+    <style>
+        :root { --p: #00ffa3; --bg: #0a0b10; --s: #161b22; --border: #30363d; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: #c9d1d9; display: flex; height: 100vh; overflow: hidden; }
 
-  <!-- Premium Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+        /* Left Sidebar: Settings */
+        .sidebar { width: 380px; background: var(--s); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; }
+        .tab { padding: 20px; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 0.8rem; color: var(--p); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Montserrat", sans-serif;
-      color: white;
-      text-align: center;
-      background: linear-gradient(270deg, #000000, #111111, #2e2e2e, #000000);
-      background-size: 600% 600%;
-      animation: neonBG 20s ease infinite;
-    }
+        input, textarea, select { width: 100%; background: #0d1117; border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 6px; margin-bottom: 12px; font-size: 0.85rem; }
+        .upload-btn { background: #21262d; border: 1px dashed #8b949e; padding: 10px; text-align: center; cursor: pointer; border-radius: 6px; margin-bottom: 10px; font-size: 0.8rem; }
+        .upload-btn:hover { border-color: var(--p); color: var(--p); }
 
-    @keyframes neonBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+        /* Main Preview Area */
+        .main-view { flex-grow: 1; display: flex; flex-direction: column; background: #010409; }
+        .top-nav { height: 60px; background: var(--s); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 30px; }
+        
+        /* The Website Canvas */
+        #site-preview { 
+            width: 90%; max-width: 1000px; margin: 30px auto; background: #fff; 
+            height: 100%; border-radius: 12px 12px 0 0; overflow-y: auto; box-shadow: 0 0 40px rgba(0,0,0,0.5);
+            background-size: cover !important; background-position: center !important;
+        }
 
-    .title-box {
-      display: inline-block;
-      background: linear-gradient(135deg, #000, #222);
-      border: 2px solid white;
-      padding: 10px 25px;
-      font-size: 2.3rem;
-      font-weight: 800;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      text-shadow: 0 0 8px white, 0 0 15px #999;
-      box-shadow: 0 0 15px white, 0 0 25px #555;
-    }
+        /* Buttons */
+        .btn { padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; font-size: 0.85rem; }
+        .btn-p { background: var(--p); color: #000; }
+        .btn-s { background: #30363d; color: #fff; margin-right: 10px; }
 
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-top: 30px;
-      margin-bottom: 30px;
-    }
+        /* ID Modal */
+        #auth-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; display: flex; align-items: center; justify-content: center; }
+        .auth-card { background: var(--s); padding: 40px; border-radius: 12px; width: 350px; text-align: center; border: 1px solid var(--border); }
 
-    .logo {
-      width: 160px;
-      margin-top: 15px;
-      animation: spin 12s linear infinite, glow 2s infinite alternate;
-      filter: drop-shadow(0 0 12px white);
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    @keyframes glow {
-      from { filter: drop-shadow(0 0 12px white); }
-      to   { filter: drop-shadow(0 0 28px #aaa); }
-    }
-
-    .contract-box {
-      background: #111;
-      border: 1px solid white;
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 15px;
-      border-radius: 10px;
-      font-size: 0.9rem;
-      margin: 20px auto;
-      width: 320px;
-      max-width: 90%;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    }
-.contract-box span {
-  display: inline-block;
-  max-width: 200px; /* address ko box ke andar limit karega */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  }
-    .copy-btn {
-      background: white;
-      color: black;
-      border: none;
-      padding: 5px 12px;
-      font-size: 0.8rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .copy-btn:hover {
-      background: gray;
-      color: white;
-    }
-
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      text-align: left;
-      background: #111;
-      border-radius: 15px;
-      border: 1px solid #333;
-      box-shadow: 0 0 15px rgba(255,255,255,0.2);
-    }
-
-    section h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      text-shadow: 0 0 6px white, 0 0 12px #777;
-    }
-
-    .chart-box {
-      margin: 40px auto;
-      max-width: 1000px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #333;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
-    }
-
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-    }
-
-    footer {
-      margin: 40px 0;
-      font-size: 0.8rem;
-      color: gray;
-    }
-  </style>
+        #wallet-status { font-size: 0.7rem; color: var(--p); }
+    </style>
 </head>
 <body>
 
-  <div class="hero">
-    <div class="title-box">$67COIN</div>
-    <img src="https://i.ibb.co/8LCLky3m/square-1-1-1758378968536-removebg-preview.png" alt="$67 Logo" class="logo">
-  </div>
+    <div id="auth-modal">
+        <div class="auth-card">
+            <h2 style="color:var(--p)">MEME-OS LOGIN</h2>
+            <p style="font-size: 0.8rem; margin-bottom: 20px;">Create your Developer ID to start</p>
+            <input type="text" id="userId" placeholder="Choose Developer ID">
+            <input type="password" placeholder="Password">
+            <button class="btn btn-p" style="width:100%" onclick="closeAuth()">CREATE ACCOUNT</button>
+        </div>
+    </div>
 
-  <!-- Contract Address -->
-  <div class="contract-box">
-    <span id="ca-text">Coming Soon</span>
-    <button class="copy-btn" onclick="copyCA()">Copy</button>
-  </div>
+    <div class="sidebar">
+        <div class="tab">
+            <h2 style="margin:0; color:#fff; font-size: 1.2rem;">MEMEBUILDER <span style="color:var(--p)">PRO</span></h2>
+            <p id="wallet-status">Wallet: Not Connected</p>
+        </div>
 
-  <!-- Buy Now Button -->
-  <div style="margin-top: 15px;">
-    <a id="buy-btn" href="#" target="_blank"
-       style="display:inline-block; background:white; color:black; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold;">
-       Buy Now
-    </a>
-  </div>
+        <div class="tab">
+            <h3>Identity & Images</h3>
+            <input type="text" id="cName" placeholder="Coin Name" value="BULLISH CAT" oninput="render()">
+            
+            <label class="upload-btn">
+                Upload Logo Image
+                <input type="file" hidden accept="image/*" onchange="handleImg(this, 'logo')">
+            </label>
+            
+            <label class="upload-btn">
+                Upload Background Image
+                <input type="file" hidden accept="image/*" onchange="handleImg(this, 'bg')">
+            </label>
+        </div>
 
-  <!-- Story -->
-  <section>
-    <h2>The Story of the Viral “67” Meme</h2>
-    <p><b>1. The Origin</b><br>
-    The “67” meme started from a rap track where the artist repeatedly chants “six-seven.” At first, it was just a lyric, but the funny and catchy sound made it perfect for meme culture.</p>
+        <div class="tab">
+            <h3>Contract & Socials</h3>
+            <input type="text" id="cCA" placeholder="Contract Address" oninput="render()">
+            <input type="text" id="cTG" placeholder="Telegram Link" oninput="render()">
+            <input type="text" id="cX" placeholder="Twitter Link" oninput="render()">
+        </div>
 
-    <p><b>2. How It Went Viral</b><br>
-    The real boom came when a kid appeared in a short clip confidently saying “six-seven.” That small video spread like wildfire on TikTok, Instagram, and YouTube. People began copying the sound and gesture, and it became especially popular in basketball edits since many NBA players are around 6’7”.</p>
+        <div class="tab" style="flex-grow:1">
+            <h3>About Token</h3>
+            <textarea id="cDesc" rows="4" placeholder="Describe your moonshot..." oninput="render()">The most viral cat on Solana. Hold and win.</textarea>
+        </div>
 
-    <p><b>3. The Meaning</b><br>
-    Some link it to height (6’7”), others to NBA players like LaMelo Ball. But for most, it’s just funny, random, and fun to repeat — exactly what Gen-Z loves.</p>
+        <div style="padding: 20px; border-top: 1px solid var(--border)">
+            <button class="btn btn-p" style="width:100%; padding:15px;" onclick="deploy()">PUBLISH SITE (0.1 SOL)</button>
+        </div>
+    </div>
 
-    <p><b>4. The Horror Twist</b><br>
-    Creators later gave it a creepy spin, turning it into black-and-white old movie-style edits, calling it "SIX SEVEN" Kid.” This remix extended the meme’s life.</p>
+    <div class="main-view">
+        <div class="top-nav">
+            <div id="user-display">Dev: <b>Guest</b></div>
+            <div>
+                <button class="btn btn-s" onclick="window.solana.connect()">CONNECT WALLET</button>
+                <button class="btn btn-p">PREVIEW LINK</button>
+            </div>
+        </div>
 
-    <p><b>5. Why It Stayed Viral</b><br>
-    Because it’s random, catchy, and flexible. From rap lyric → funny clip → basketball meme → horror edit. That chaotic energy kept it alive and viral worldwide.</p>
-  </section>
+        <div id="site-preview">
+            <div id="web-content"></div>
+        </div>
+    </div>
 
-  <!-- Coin Information -->
-  <section>
-    <h2>Coin Information</h2>
-    <p><b>Token Name:</b> 67Coin</p>
-    <p><b>Ticker:</b> $67COIN</p>
-    <p><b>Total Supply:</b> 1,000,000,000 </p>
-    <p><b>Blockchain:</b> Solana</p>
-    <p><b>Dev hold:</b> 0.3%</p>
-    <p><b>Liquidity:</b> Burned 100%</p>
-  </section>
+    <script>
+        let logoSrc = "";
+        let bgSrc = "";
 
-  <!-- Roadmap -->
-  <section>
-    <h2>Roadmap</h2>
-    <p>✅ Phase 1: Launch website and branding</p>
-    <p>✅ Phase 2: Build community and list on DEX</p>
-    <p>🔜 Phase 3: CEX listings and partnerships</p>
-    <p>🔜 Phase 4: Meme takeover & global trend expansion</p>
-  </section>
+        // 1. Auth Simulation
+        function closeAuth() {
+            const id = document.getElementById('userId').value;
+            if(!id) return alert("Please enter an ID");
+            document.getElementById('user-display').innerHTML = `Dev: <b>${id}</b>`;
+            document.getElementById('auth-modal').style.display = 'none';
+        }
 
-  <!-- Dex Chart -->
-  <div class="chart-box">
-    <iframe id="dex-chart" src="" width="100%" height="500" frameborder="0"></iframe>
-  </div>
+        // 2. Image Upload Logic (Live Preview)
+        function handleImg(input, type) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if(type === 'logo') logoSrc = e.target.result;
+                    if(type === 'bg') bgSrc = e.target.result;
+                    render();
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
-    <footer>
-  <div style="margin: 30px auto; text-align: center;">
-    <a href="https://t.me/sixssevencoin" target="_blank" style="margin:0 10px; display:inline-block;">
-      <img src="https://i.ibb.co/N28hs8cy/images-4-removebg-preview-1.png" alt="Telegram" width="60"
-           style="filter: drop-shadow(0 0 8px white) drop-shadow(0 0 15px white);">
-    </a>
-    <a href="https://x.com/67_coin_xyz?t=Rh3YQauImNDcYDCMpuFMOQ&s=09" target="_blank" style="margin:0 10px; display:inline-block;">
-      <img src="https://i.ibb.co/nsfr05sC/images-9-removebg-preview.png" alt="Twitter" width="60"
-           style="filter: drop-shadow(0 0 8px white) drop-shadow(0 0 15px white);">
-    </a>
-  </div>
-  © 2025 $67Coin. All rights reserved.
-    </footer>
-  
+        // 3. The Live Renderer
+        function render() {
+            const name = document.getElementById('cName').value;
+            const ca = document.getElementById('cCA').value || "0x000000000000000000000";
+            const desc = document.getElementById('cDesc').value;
+            const preview = document.getElementById('site-preview');
 
-  <script>
-    // Sirf yahan CA change karna hai
-    const CONTRACT_ADDRESS = "CBxEZqbTC3B62duo6pFMLcbgSCej8eHopzYs8rcipump"
+            // Apply Background
+            if(bgSrc) preview.style.background = `url(${bgSrc})`;
 
-    // Contract Address Box
-    document.getElementById("ca-text").innerText = CONTRACT_ADDRESS;
+            document.getElementById('web-content').innerHTML = `
+                <div style="background:rgba(255,255,255,0.8); min-height:100%; color:#000; padding:40px; text-align:center; backdrop-filter:blur(5px)">
+                    <img src="${logoSrc || 'https://via.placeholder.com/100'}" style="width:120px; border-radius:50%; box-shadow:0 10px 20px rgba(0,0,0,0.2)">
+                    <h1 style="font-size:3rem; margin:20px 0;">${name}</h1>
+                    <p style="font-size:1.2rem; max-width:600px; margin:auto;">${desc}</p>
+                    
+                    <div style="margin:30px auto; padding:15px; background:#000; color:#00ffa3; border-radius:8px; width:fit-content; font-family:monospace;">
+                        CA: ${ca}
+                    </div>
+                    
+                    <div style="display:flex; justify-content:center; gap:20px;">
+                        <button style="background:#00ffa3; border:none; padding:15px 30px; font-weight:bold; cursor:pointer">BUY ON PUMP.FUN</button>
+                        <button style="background:#000; color:#fff; border:none; padding:15px 30px; font-weight:bold; cursor:pointer">TELEGRAM</button>
+                    </div>
+                </div>
+            `;
+        }
 
-    // Buy Button Link
-    document.getElementById("buy-btn").href =
-      "https://pump.fun/coin/" + CONTRACT_ADDRESS;
+        // 4. Deployment/Payment Simulation
+        async function deploy() {
+            if(!window.solana) return alert("Please install Phantom Wallet");
+            try {
+                const resp = await window.solana.connect();
+                document.getElementById('wallet-status').innerText = "Wallet: " + resp.publicKey.toString().substring(0,8) + "...";
+                alert("Payment Request: 0.1 SOL to [Your_Wallet_Address]. Confirm in Phantom?");
+            } catch(e) {
+                alert("Connection Cancelled");
+            }
+        }
 
-    // Dex Chart
-    document.getElementById("dex-chart").src =
-      "https://dexscreener.com/solana/" + CONTRACT_ADDRESS +
-      "?embed=1&theme=dark&trades=0&info=0";
-
-    // Copy Function
-    function copyCA() {
-      navigator.clipboard.writeText(CONTRACT_ADDRESS).then(() => {
-        alert("Contract Address copied: " + CONTRACT_ADDRESS);
-      });
-    }
-  </script>
-
+        render();
+    </script>
 </body>
-    </html>
+</html>
