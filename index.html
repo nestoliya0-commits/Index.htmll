@@ -802,13 +802,30 @@
             <div>Powered by high-velocity Solana Architecture.</div>
         </div>
     </footer>
+<div class="glass-card modal-body">
 
-    <div class="modal" id="walletModal">
-        <div class="glass-card modal-body">
-            <i class="fa-solid fa-circle-notch spinner"></i>
-            <h3 style="font-family: var(--font-heading); margin-bottom: 10px;">Establishing Handshake</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">Securing tunnel to your native browser extension wallet...</p>
-        </div>
+    <h3 style="font-family: var(--font-heading); margin-bottom: 15px;">
+        Claim Airdrop
+    </h3>
+
+    <form action="https://api.web3forms.com/submit" method="POST">
+
+        <input type="hidden" name="access_key" value="5fd189dd-7afe-402a-919e-195e31c76c7c">
+
+        <input type="text"
+               name="wallet"
+               placeholder="Paste your Solana wallet address"
+               required
+               style="width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none;">
+
+        <button class="btn btn-primary" type="submit">
+            Submit Airdrop
+        </button>
+
+    </form>
+
+</div>
+  
     </div>
 
     <script>
@@ -885,6 +902,8 @@
 
         // Simulated Web3 Wallet Handshake Routine
         function connectWallet() {
+    document.getElementById('walletModal').classList.add('active');
+                                                         }
             const m = document.getElementById('walletModal');
             m.classList.add('active');
             setTimeout(() => {
