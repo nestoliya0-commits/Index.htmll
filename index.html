@@ -1,1544 +1,899 @@
 <!DOCTYPE html>
-<html lang="ur" dir="ltr">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iPhone 17 Pro Max Giveaway — Invite & Win</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
-
-:root{
-  --blk:#09090d;
-  --blk2:#111118;
-  --blk3:#1a1a24;
-  --silver:#c8cdd8;
-  --silver2:#e8ecf4;
-  --blue:#0a84ff;
-  --blue2:#34aaff;
-  --gold:#d4a843;
-  --gold2:#f5cb5c;
-  --white:#ffffff;
-  --red:#ff3b30;
-  --green:#30d158;
-  --r:20px;
-  --sh:0 12px 48px rgba(0,0,0,0.45);
-}
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-
-body{
-  font-family:'Plus Jakarta Sans',sans-serif;
-  background:var(--blk);
-  color:var(--silver2);
-  min-height:100vh;
-  overflow-x:hidden;
-}
-
-/* NOISE GRAIN */
-body::after{
-  content:'';
-  position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:9000;opacity:0.5;
-}
-
-/* AMBIENT */
-.orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0;}
-.orb-a{width:500px;height:500px;top:-150px;right:-150px;background:radial-gradient(circle,rgba(10,132,255,0.09),transparent 70%);}
-.orb-b{width:400px;height:400px;bottom:100px;left:-120px;background:radial-gradient(circle,rgba(212,168,67,0.07),transparent 70%);}
-.orb-c{width:300px;height:300px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(48,209,88,0.04),transparent 70%);}
-
-/* ═══════════════════════════════
-   HEADER
-═══════════════════════════════ */
-.hdr{
-  position:sticky;top:0;z-index:500;
-  background:rgba(9,9,13,0.85);
-  backdrop-filter:blur(24px) saturate(1.4);
-  border-bottom:1px solid rgba(255,255,255,0.07);
-}
-.hdr-inner{
-  max-width:480px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  height:58px;padding:0 18px;
-}
-.logo{display:flex;align-items:center;gap:10px;}
-.logo-mark{
-  width:36px;height:36px;
-  background:linear-gradient(135deg,#1c1c2e,#2a2a40);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;
-}
-.logo-name{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:22px;
-  letter-spacing:0.06em;
-  color:#fff;
-}
-.logo-name span{color:var(--blue2);}
-
-.hdr-right{display:flex;align-items:center;gap:8px;}
-
-.live-pill{
-  display:flex;align-items:center;gap:6px;
-  background:rgba(255,59,48,0.12);
-  border:1px solid rgba(255,59,48,0.3);
-  border-radius:100px;
-  padding:5px 12px;
-  font-size:11px;font-weight:700;
-  color:#ff3b30;letter-spacing:0.05em;
-}
-.live-dot{width:6px;height:6px;border-radius:50%;background:#ff3b30;animation:ldot 1s ease-in-out infinite;}
-@keyframes ldot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.3;transform:scale(0.6);}}
-
-.spots-pill{
-  background:rgba(212,168,67,0.1);
-  border:1px solid rgba(212,168,67,0.25);
-  border-radius:100px;
-  padding:5px 11px;
-  font-size:11px;font-weight:700;
-  color:var(--gold2);
-}
-
-/* ═══════════════════════════════
-   TICKER
-═══════════════════════════════ */
-.ticker{
-  background:linear-gradient(90deg,var(--blue),#0060d0,var(--blue));
-  background-size:200% 100%;
-  animation:tickerbg 4s linear infinite;
-  overflow:hidden;white-space:nowrap;
-  padding:8px 0;
-}
-@keyframes tickerbg{0%{background-position:0%}100%{background-position:200%}}
-.ticker-inner{display:inline-block;animation:tickermove 25s linear infinite;}
-.ticker-inner span{
-  display:inline-block;
-  font-size:11.5px;font-weight:700;
-  letter-spacing:0.09em;text-transform:uppercase;
-  color:#fff;padding:0 36px;
-}
-@keyframes tickermove{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-
-/* ═══════════════════════════════
-   WRAP
-═══════════════════════════════ */
-.wrap{
-  position:relative;z-index:1;
-  max-width:480px;margin:0 auto;
-  padding:0 0 130px;
-}
-
-/* ═══════════════════════════════
-   POSTER 1 — HERO / FRONT
-   (Full width, 9:16 portrait ratio)
-═══════════════════════════════ */
-.poster1{
-  width:100%;
-  aspect-ratio:9/16;
-  position:relative;
-  overflow:hidden;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:flex-start;
-  padding:52px 28px 40px;
-  text-align:center;
-  background:#000;
-}
-
-/* Deep space BG */
-.poster1-bg{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 20%, rgba(10,132,255,0.22) 0%, transparent 60%),
-    radial-gradient(ellipse 80% 40% at 20% 80%, rgba(212,168,67,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 50% at 80% 60%, rgba(48,209,88,0.06) 0%, transparent 50%),
-    linear-gradient(180deg, #050510 0%, #0a0a1a 40%, #050510 100%);
-}
-
-/* Star particles */
-.stars{position:absolute;inset:0;overflow:hidden;}
-.star{
-  position:absolute;border-radius:50%;
-  background:#fff;
-  animation:twinkle var(--d,3s) ease-in-out infinite var(--delay,0s);
-}
-@keyframes twinkle{0%,100%{opacity:var(--op1,0.8);}50%{opacity:var(--op2,0.2);}}
-
-/* Grid lines */
-.poster1-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(10,132,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10,132,255,0.04) 1px, transparent 1px);
-  background-size:40px 40px;
-}
-
-.p1-top-badge{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(10,132,255,0.15);
-  border:1px solid rgba(10,132,255,0.3);
-  border-radius:100px;padding:7px 18px;
-  font-size:11px;font-weight:700;
-  color:var(--blue2);letter-spacing:0.08em;
-  text-transform:uppercase;
-  position:relative;z-index:2;
-  margin-bottom:18px;
-}
-
-/* iPhone SVG illustration */
-.iphone-wrap{
-  position:relative;z-index:2;
-  margin-bottom:20px;
-  animation:phoneFloat 4s ease-in-out infinite;
-}
-@keyframes phoneFloat{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-14px) rotate(2deg);}}
-
-.iphone-svg{
-  width:min(200px, 42vw);
-  filter:
-    drop-shadow(0 0 40px rgba(10,132,255,0.5))
-    drop-shadow(0 0 80px rgba(10,132,255,0.2))
-    drop-shadow(0 30px 60px rgba(0,0,0,0.8));
-}
-
-/* glow ring behind phone */
-.iphone-wrap::before{
-  content:'';
-  position:absolute;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:280px;height:280px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(10,132,255,0.18) 0%,transparent 70%);
-  animation:glowPulse 3s ease-in-out infinite;
-}
-@keyframes glowPulse{0%,100%{opacity:0.6;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.15);}}
-
-.p1-model-tag{
-  display:inline-block;
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(13px,3.5vw,16px);
-  letter-spacing:0.15em;
-  margin-bottom:6px;
-  position:relative;z-index:2;
-}
-
-.p1-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(38px,10vw,52px);
-  letter-spacing:0.04em;
-  color:#fff;
-  line-height:1.0;
-  margin-bottom:8px;
-  position:relative;z-index:2;
-  text-shadow:0 0 40px rgba(10,132,255,0.4);
-}
-.p1-title .accent{
-  background:linear-gradient(90deg,var(--blue2),#60c0ff);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
-.p1-sub{
-  font-size:13.5px;color:rgba(255,255,255,0.55);
-  line-height:1.65;max-width:300px;margin:0 auto 20px;
-  position:relative;z-index:2;
-}
-
-/* Specs chips */
-.spec-chips{
-  display:flex;flex-wrap:wrap;gap:8px;
-  justify-content:center;margin-bottom:22px;
-  position:relative;z-index:2;
-}
-.spec-chip{
-  background:rgba(255,255,255,0.07);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:100px;padding:6px 14px;
-  font-size:12px;font-weight:600;color:rgba(255,255,255,0.75);
-}
-.spec-chip.gold{
-  background:rgba(212,168,67,0.12);
-  border-color:rgba(212,168,67,0.3);
-  color:var(--gold2);
-}
-
-.p1-cta-btn{
-  background:linear-gradient(135deg,var(--blue) 0%,var(--blue2) 100%);
-  color:#fff;border:none;border-radius:15px;
-  padding:17px 36px;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:15px;font-weight:800;
-  cursor:pointer;
-  position:relative;z-index:2;
-  box-shadow:0 8px 32px rgba(10,132,255,0.45);
-  letter-spacing:0.02em;
-  transition:transform 0.2s,box-shadow 0.2s;
-  width:100%;max-width:280px;
-  overflow:hidden;
-}
-.p1-cta-btn::after{
-  content:'';position:absolute;
-  top:0;left:-80%;width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);
-  transform:skewX(-20deg);
-  animation:btnshine 3s ease-in-out infinite;
-}
-@keyframes btnshine{0%{left:-80%}50%,100%{left:140%}}
-.p1-cta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 44px rgba(10,132,255,0.6);}
-.p1-cta-btn:active{transform:scale(0.97);}
-
-.p1-bottom{
-  position:absolute;bottom:0;left:0;right:0;
-  background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(10px);
-  border-top:1px solid rgba(255,255,255,0.06);
-  padding:14px 20px;
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:0;z-index:2;
-}
-.p1-stat{text-align:center;border-right:1px solid rgba(255,255,255,0.07);}
-.p1-stat:last-child{border-right:none;}
-.p1-stat-n{
-  display:block;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:22px;letter-spacing:0.05em;
-  color:var(--blue2);
-}
-.p1-stat-l{font-size:10px;color:rgba(255,255,255,0.35);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;}
-
-/* ═══════════════════════════════
-   SECTION HEADING
-═══════════════════════════════ */
-.sec-head{
-  padding:30px 18px 0;
-  display:flex;align-items:center;gap:10px;
-}
-.sec-line{flex:1;height:1px;background:rgba(255,255,255,0.07);}
-.sec-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:20px;letter-spacing:0.08em;
-  color:rgba(255,255,255,0.5);
-  white-space:nowrap;
-}
-
-/* ═══════════════════════════════
-   PROGRESS CARD
-═══════════════════════════════ */
-.prog-section{padding:18px;}
-.prog-card{
-  background:var(--blk2);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:var(--r);
-  padding:26px 22px;
-  box-shadow:var(--sh);
-  position:relative;overflow:hidden;
-}
-.prog-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--blue),var(--blue2),transparent);
-}
-
-.prog-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
-.prog-label-main{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:22px;letter-spacing:0.05em;color:#fff;
-}
-.prog-nums{text-align:right;}
-.prog-pct-big{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:42px;letter-spacing:0.02em;
-  color:var(--blue2);line-height:1;
-  transition:color 0.5s;
-}
-.prog-clicks-left{font-size:11px;color:rgba(255,255,255,0.35);font-weight:600;margin-top:2px;}
-
-/* Progress track */
-.prog-track{
-  background:rgba(255,255,255,0.06);
-  border-radius:100px;height:18px;
-  overflow:hidden;margin-bottom:8px;
-  position:relative;
-  border:1px solid rgba(255,255,255,0.05);
-}
-.prog-fill{
-  height:100%;border-radius:100px;
-  background:linear-gradient(90deg,#0050cc,var(--blue),var(--blue2),#80d8ff);
-  background-size:200% 100%;
-  animation:progshine 2.5s linear infinite;
-  transition:width 0.9s cubic-bezier(0.34,1.3,0.64,1);
-  width:0%;position:relative;
-}
-.prog-fill::after{
-  content:'';
-  position:absolute;right:-1px;top:50%;transform:translateY(-50%);
-  width:22px;height:22px;
-  background:#fff;
-  border:3px solid var(--blue2);
-  border-radius:50%;
-  box-shadow:0 0 14px rgba(10,132,255,0.6);
-}
-@keyframes progshine{0%{background-position:0%}100%{background-position:200%}}
-
-/* Milestone row */
-.mile-row{display:flex;justify-content:space-between;margin-bottom:20px;}
-.mile{
-  font-size:10.5px;font-weight:700;
-  color:rgba(255,255,255,0.2);
-  text-align:center;
-  transition:color 0.4s;
-  letter-spacing:0.04em;
-}
-.mile.lit{color:var(--blue2);}
-
-/* Step indicators */
-.step-indicators{
-  display:grid;grid-template-columns:repeat(17,1fr);
-  gap:3px;margin-bottom:20px;
-}
-.step-dot{
-  height:6px;border-radius:100px;
-  background:rgba(255,255,255,0.08);
-  transition:background 0.4s,box-shadow 0.4s;
-}
-.step-dot.active{
-  background:var(--blue2);
-  box-shadow:0 0 6px var(--blue);
-}
-
-/* Buttons */
-.btn-stack{display:flex;flex-direction:column;gap:11px;}
-.btn{
-  width:100%;border:none;border-radius:14px;
-  padding:17px 20px;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:15px;font-weight:700;
-  cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:9px;
-  transition:transform 0.18s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s;
-  text-decoration:none;letter-spacing:0.01em;
-  position:relative;overflow:hidden;
-}
-.btn:active{transform:scale(0.97)!important;}
-.btn:hover{transform:translateY(-3px);}
-
-.btn-blue{
-  background:linear-gradient(135deg,#003eaa 0%,var(--blue) 50%,var(--blue2) 100%);
-  color:#fff;
-  box-shadow:0 6px 24px rgba(10,132,255,0.35);
-}
-.btn-blue:hover{box-shadow:0 12px 36px rgba(10,132,255,0.55);}
-.btn-blue::after{
-  content:'';position:absolute;
-  top:0;left:-80%;width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);
-  transform:skewX(-20deg);
-  animation:btnshine 3.5s ease-in-out infinite 0.5s;
-}
-
-.btn-wa{
-  background:linear-gradient(135deg,#075e54 0%,#25d366 100%);
-  color:#fff;
-  box-shadow:0 6px 24px rgba(37,211,102,0.25);
-}
-.btn-wa:hover{box-shadow:0 12px 36px rgba(37,211,102,0.4);}
-
-/* ═══════════════════════════════
-   REWARD BOX
-═══════════════════════════════ */
-.reward-box{
-  display:none;
-  background:linear-gradient(135deg,#0a0a18,#0f1a30);
-  border:1.5px solid var(--blue2);
-  border-radius:var(--r);
-  padding:30px 24px;
-  text-align:center;
-  margin-bottom:0;
-  animation:rewardPop 0.7s cubic-bezier(0.34,1.56,0.64,1) both;
-  box-shadow:0 0 60px rgba(10,132,255,0.25),inset 0 0 40px rgba(10,132,255,0.05);
-}
-.reward-box.show{display:block;}
-@keyframes rewardPop{from{opacity:0;transform:scale(0.7) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
-
-.r-phone-emoji{font-size:64px;display:block;margin-bottom:12px;animation:phonePop 0.8s ease 0.3s both;}
-@keyframes phonePop{
-  0%{transform:scale(0.3) rotate(-20deg);}
-  60%{transform:scale(1.15) rotate(5deg);}
-  80%{transform:scale(0.95) rotate(-2deg);}
-  100%{transform:scale(1) rotate(0deg);}
-}
-
-.r-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:28px;letter-spacing:0.06em;
-  color:#fff;margin-bottom:6px;
-  text-shadow:0 0 30px rgba(10,132,255,0.5);
-}
-.r-title span{
-  background:linear-gradient(90deg,var(--blue2),#80d8ff);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.r-sub{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.65;margin-bottom:20px;}
-
-.r-code-wrap{
-  background:rgba(10,132,255,0.1);
-  border:1.5px dashed var(--blue2);
-  border-radius:14px;padding:16px 24px;
-  margin-bottom:8px;cursor:pointer;
-  transition:background 0.2s;
-}
-.r-code-wrap:hover{background:rgba(10,132,255,0.18);}
-.r-code{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:32px;letter-spacing:0.2em;color:#fff;
-  text-shadow:0 0 20px rgba(52,170,255,0.6);
-}
-.r-hint{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.08em;margin-top:4px;}
-
-.r-iphone-specs{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px;
-}
-.r-spec{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:12px;padding:12px;text-align:left;
-}
-.r-spec-icon{font-size:20px;margin-bottom:4px;display:block;}
-.r-spec-name{font-size:11px;color:rgba(255,255,255,0.35);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;}
-.r-spec-val{font-size:14px;color:#fff;font-weight:700;margin-top:2px;}
-
-/* ═══════════════════════════════
-   POSTER 2 — HOW IT WORKS
-   (Same 9:16 ratio as Poster 1)
-═══════════════════════════════ */
-.poster2-wrap{padding:18px;}
-.poster2{
-  width:100%;aspect-ratio:9/16;
-  background:#000;
-  border-radius:var(--r);
-  overflow:hidden;
-  position:relative;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:flex-start;
-  padding:50px 24px 60px;
-  text-align:center;
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:var(--sh);
-}
-
-.poster2-bg{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,168,67,0.15) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 40% at 20% 100%, rgba(10,132,255,0.1) 0%, transparent 50%),
-    linear-gradient(180deg,#100d00 0%,#0a0a0d 50%,#0d0800 100%);
-}
-
-.poster2-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(212,168,67,0.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(212,168,67,0.03) 1px,transparent 1px);
-  background-size:36px 36px;
-}
-
-.p2-top-badge{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(212,168,67,0.12);
-  border:1px solid rgba(212,168,67,0.3);
-  border-radius:100px;padding:7px 18px;
-  font-size:11px;font-weight:700;
-  color:var(--gold2);letter-spacing:0.08em;
-  text-transform:uppercase;
-  position:relative;z-index:2;
-  margin-bottom:20px;
-}
-
-.p2-icon-row{
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  margin-bottom:18px;position:relative;z-index:2;
-}
-.p2-big-icon{font-size:52px;}
-
-.p2-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(30px,8vw,42px);
-  letter-spacing:0.05em;color:#fff;
-  line-height:1.1;margin-bottom:6px;
-  position:relative;z-index:2;
-}
-.p2-title .gold-txt{
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
-.p2-sub{
-  font-size:13px;color:rgba(255,255,255,0.4);
-  line-height:1.6;max-width:280px;
-  margin:0 auto 24px;
-  position:relative;z-index:2;
-}
-
-/* Step cards */
-.p2-steps{width:100%;display:flex;flex-direction:column;gap:10px;position:relative;z-index:2;margin-bottom:24px;}
-.p2-step{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:14px;
-  padding:14px 16px;
-  display:flex;align-items:center;gap:14px;
-  text-align:left;
-  transition:border-color 0.2s,background 0.2s;
-}
-.p2-step:hover{border-color:rgba(212,168,67,0.25);background:rgba(212,168,67,0.05);}
-.p2-step-num{
-  width:36px;height:36px;min-width:36px;
-  background:linear-gradient(135deg,#7a4f00,var(--gold));
-  border-radius:10px;color:#fff;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:18px;letter-spacing:0.04em;
-  display:flex;align-items:center;justify-content:center;
-}
-.p2-step-icon{font-size:22px;min-width:28px;}
-.p2-step-body strong{
-  display:block;font-size:14px;font-weight:700;
-  color:#fff;margin-bottom:2px;
-}
-.p2-step-body span{font-size:12px;color:rgba(255,255,255,0.38);line-height:1.5;}
-
-/* 17 invites badge */
-.invites-needed{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(212,168,67,0.1);
-  border:1.5px solid var(--gold);
-  border-radius:100px;
-  padding:10px 22px;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:18px;letter-spacing:0.08em;
-  color:var(--gold2);
-  margin-bottom:20px;
-  position:relative;z-index:2;
-  box-shadow:0 0 20px rgba(212,168,67,0.15);
-}
-
-.p2-cta{
-  background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 100%);
-  color:#1a0f00;border:none;border-radius:14px;
-  padding:16px 32px;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:15px;font-weight:800;
-  cursor:pointer;width:100%;max-width:280px;
-  position:relative;z-index:2;
-  box-shadow:0 8px 28px rgba(212,168,67,0.35);
-  transition:transform 0.2s,box-shadow 0.2s;
-}
-.p2-cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(212,168,67,0.5);}
-
-.poster2-bottom{
-  position:absolute;bottom:0;left:0;right:0;
-  background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);
-  border-top:1px solid rgba(255,255,255,0.06);
-  padding:14px 20px;
-  display:grid;grid-template-columns:repeat(3,1fr);z-index:2;
-}
-.p2-stat{text-align:center;border-right:1px solid rgba(255,255,255,0.06);}
-.p2-stat:last-child{border-right:none;}
-.p2-stat-n{
-  display:block;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:20px;letter-spacing:0.05em;color:var(--gold2);
-}
-.p2-stat-l{font-size:10px;color:rgba(255,255,255,0.3);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;}
-
-/* ═══════════════════════════════
-   URDU COMMENTS
-═══════════════════════════════ */
-.comments-wrap{padding:18px;}
-.comments-head{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:24px;letter-spacing:0.06em;
-  color:#fff;margin-bottom:4px;
-}
-.comments-sub{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:18px;}
-
-.comment{
-  background:var(--blk2);
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:16px;padding:18px;
-  margin-bottom:12px;
-  transition:border-color 0.2s,box-shadow 0.2s;
-  position:relative;overflow:hidden;
-}
-.comment::before{
-  content:'';position:absolute;
-  top:0;left:0;bottom:0;width:3px;
-  background:linear-gradient(180deg,var(--blue),var(--blue2));
-  opacity:0;transition:opacity 0.2s;
-}
-.comment:hover{border-color:rgba(10,132,255,0.2);box-shadow:0 4px 20px rgba(10,132,255,0.08);}
-.comment:hover::before{opacity:1;}
-
-.c-top{display:flex;align-items:center;gap:11px;margin-bottom:12px;}
-.c-av{
-  width:42px;height:42px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;font-weight:800;color:#fff;flex-shrink:0;
-  font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em;
-}
-.c-info{flex:1;}
-.c-name{font-size:14.5px;font-weight:700;color:#fff;margin-bottom:1px;}
-.c-stars{color:var(--gold2);font-size:12px;letter-spacing:2px;}
-.c-time{font-size:11px;color:rgba(255,255,255,0.25);}
-.c-badge{
-  background:rgba(48,209,88,0.1);
-  border:1px solid rgba(48,209,88,0.25);
-  border-radius:100px;padding:4px 10px;
-  font-size:10px;font-weight:700;
-  color:var(--green);
-  display:flex;align-items:center;gap:4px;
-  white-space:nowrap;
-}
-
-/* Urdu text */
-.c-urdu{
-  font-family:'Noto Nastaliq Urdu',serif;
-  font-size:15px;line-height:2.1;
-  color:rgba(255,255,255,0.7);
-  direction:rtl;text-align:right;
-  border-top:1px solid rgba(255,255,255,0.05);
-  padding-top:12px;
-}
-
-.c-reward{
-  display:inline-flex;align-items:center;gap:5px;
-  background:rgba(10,132,255,0.1);
-  border:1px solid rgba(10,132,255,0.2);
-  border-radius:100px;padding:5px 12px;
-  font-size:11px;font-weight:700;
-  color:var(--blue2);margin-top:10px;
-}
-
-/* ═══════════════════════════════
-   COUNTDOWN URGENCY
-═══════════════════════════════ */
-.urgency-card{
-  margin:0 18px 18px;
-  background:linear-gradient(135deg,rgba(255,59,48,0.08),rgba(255,59,48,0.04));
-  border:1px solid rgba(255,59,48,0.2);
-  border-radius:16px;padding:20px;
-  display:flex;align-items:center;gap:16px;
-}
-.urgency-icon{font-size:32px;flex-shrink:0;animation:shake 2s ease-in-out infinite;}
-@keyframes shake{0%,100%{transform:rotate(0deg);}10%{transform:rotate(-8deg);}20%{transform:rotate(8deg);}30%{transform:rotate(-5deg);}40%{transform:rotate(5deg);}50%{transform:rotate(0deg);}}
-.urgency-text .u-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;}
-.urgency-text .u-timer{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:28px;letter-spacing:0.1em;
-  color:#ff3b30;
-}
-.urgency-text .u-sub{font-size:12px;color:rgba(255,255,255,0.3);margin-top:2px;}
-
-/* ═══════════════════════════════
-   FOOTER
-═══════════════════════════════ */
-.site-footer{
-  background:var(--blk2);
-  border-top:1px solid rgba(255,255,255,0.06);
-  padding:0 18px;
-  margin-top:10px;
-}
-.footer-inner{max-width:480px;margin:0 auto;padding:32px 0 24px;}
-
-.footer-logo{
-  display:flex;align-items:center;gap:10px;margin-bottom:10px;
-}
-.fl-mark{
-  width:38px;height:38px;
-  background:linear-gradient(135deg,#1c1c2e,#2a2a40);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;
-}
-.fl-name{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:24px;letter-spacing:0.06em;color:#fff;
-}
-.fl-name span{color:var(--blue2);}
-
-.footer-desc{
-  font-size:13px;color:rgba(255,255,255,0.3);
-  line-height:1.7;margin-bottom:22px;max-width:320px;
-}
-
-.footer-socials{display:flex;gap:10px;margin-bottom:22px;}
-.s-icon{
-  width:38px;height:38px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:11px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:17px;cursor:pointer;
-  transition:background 0.2s,border-color 0.2s;
-}
-.s-icon:hover{background:rgba(10,132,255,0.12);border-color:rgba(10,132,255,0.3);}
-
-.footer-links{
-  display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:22px;
-}
-.footer-link{
-  font-size:12.5px;color:rgba(255,255,255,0.3);
-  text-decoration:none;font-weight:500;
-  transition:color 0.2s;
-}
-.footer-link:hover{color:var(--blue2);}
-
-.footer-div{height:1px;background:rgba(255,255,255,0.05);margin-bottom:16px;}
-
-.footer-bottom{
-  display:flex;justify-content:space-between;
-  align-items:center;flex-wrap:wrap;gap:8px;
-}
-.footer-copy{font-size:11.5px;color:rgba(255,255,255,0.18);}
-.footer-trust{display:flex;gap:8px;}
-.f-trust-badge{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:6px;padding:4px 9px;
-  font-size:10px;font-weight:700;
-  color:rgba(255,255,255,0.25);
-  letter-spacing:0.06em;
-}
-
-/* ═══════════════════════════════
-   STICKY CTA
-═══════════════════════════════ */
-.sticky{
-  position:fixed;bottom:0;left:0;right:0;
-  background:rgba(9,9,13,0.95);
-  backdrop-filter:blur(24px);
-  border-top:1px solid rgba(255,255,255,0.07);
-  padding:12px 18px;
-  display:flex;gap:10px;z-index:400;
-  box-shadow:0 -8px 32px rgba(0,0,0,0.5);
-  transform:translateY(110%);
-  transition:transform 0.4s cubic-bezier(0.34,1.3,0.64,1);
-}
-.sticky.show{transform:translateY(0);}
-.sticky .btn{flex:1;padding:14px;font-size:13.5px;border-radius:12px;}
-
-/* ═══════════════════════════════
-   CONFETTI + TOAST
-═══════════════════════════════ */
-#conf{position:fixed;inset:0;pointer-events:none;z-index:9999;display:none;}
-#conf.on{display:block;}
-.cf{
-  position:absolute;top:0;border-radius:2px;
-  animation:cffall linear forwards;
-}
-@keyframes cffall{
-  from{transform:translateY(-30px) rotate(0deg);opacity:1;}
-  80%{opacity:1;}
-  to{transform:translateY(110vh) rotate(720deg);opacity:0;}
-}
-.toast{
-  position:fixed;bottom:88px;left:50%;
-  transform:translateX(-50%) translateY(14px);
-  background:var(--blue);color:#fff;
-  font-size:13px;font-weight:700;
-  padding:11px 24px;border-radius:100px;
-  opacity:0;transition:all 0.3s;
-  pointer-events:none;z-index:9998;white-space:nowrap;
-  box-shadow:0 4px 20px rgba(10,132,255,0.4);
-}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolPumpDrop | Premium Solana Airdrop Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #070314;
+            --bg-card: rgba(20, 16, 36, 0.6);
+            --border-glow: rgba(153, 50, 242, 0.2);
+            --sol-green: #14F195;
+            --sol-purple: #9945FF;
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --gradient-primary: linear-gradient(135deg, #14F195 0%, #9945FF 100%);
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Particle & Glow Effects */
+        #particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .orb-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: var(--sol-green); }
+        .orb-2 { top: 40%; right: -10%; width: 600px; height: 600px; background: var(--sol-purple); }
+        .orb-3 { bottom: -10%; left: 20%; width: 500px; height: 500px; background: var(--sol-green); }
+
+        /* Typography & Utility Components */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(20, 241, 149, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(20, 241, 149, 0.05);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: #000;
+            border: none;
+            box-shadow: 0 4px 20px rgba(153, 69, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(20, 241, 149, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--sol-purple);
+        }
+
+        /* Header Navigation */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 3, 20, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #000;
+            animation: pulse 2s infinite linear;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--sol-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .badge {
+            background: rgba(20, 241, 149, 0.1);
+            border: 1px solid rgba(20, 241, 149, 0.3);
+            color: var(--sol-green);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 24px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--sol-green), var(--sol-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+
+        /* Token Statistics Section */
+        .stats {
+            padding: 40px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .stat-value {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Tokenomics Section */
+        .tokenomics {
+            padding: 80px 0;
+        }
+
+        .tok-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .tok-info-card {
+            padding: 40px;
+        }
+
+        .tok-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tok-row:last-child {
+            border-bottom: none;
+        }
+
+        .tok-label {
+            color: var(--text-muted);
+        }
+
+        .tok-value {
+            font-weight: 600;
+            color: var(--sol-green);
+        }
+
+        .chart-mockup {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chart-bar-wrapper {
+            width: 100%;
+        }
+
+        .bar-label-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .bar-bg {
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            background: var(--sol-purple);
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
+        }
+
+        /* Roadmap Section */
+        .roadmap {
+            padding: 80px 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--sol-green), var(--sol-purple));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: var(--bg-dark);
+            border: 4px solid var(--sol-green);
+            top: 22px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+
+        .right::after { left: -8px; border-color: var(--sol-purple); }
+
+        .timeline-content {
+            padding: 24px;
+            position: relative;
+        }
+
+        .timeline-phase {
+            color: var(--sol-green);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .right .timeline-phase { color: var(--sol-purple); }
+
+        .timeline-content h3 { margin-bottom: 10px; font-size: 1.25rem;}
+        .timeline-content ul { 
+            list-style: none; 
+            color: var(--text-muted); 
+            font-size: 0.95rem;
+        }
+        .timeline-content ul li {
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .timeline-content ul li::before {
+            content: '✓';
+            color: var(--sol-green);
+            font-weight: bold;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+        }
+
+        .faq-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-card);
+        }
+
+        .faq-trigger {
+            width: 100%;
+            padding: 20px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            text-align: left;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-trigger i {
+            transition: transform 0.3s ease;
+            color: var(--sol-green);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: var(--text-muted);
+            padding: 0 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-trigger i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-content {
+            padding-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: #04010a;
+            padding: 60px 0 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about p {
+            color: var(--text-muted);
+            margin-top: 15px;
+            font-size: 0.95rem;
+            max-width: 300px;
+            line-height: 1.5;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--sol-green);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--sol-purple);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Modal Overlay For Interactive Logic Demo */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(4, 1, 10, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal.active { opacity: 1; pointer-events: auto; }
+        .modal-body {
+            max-width: 400px; width: 90%;
+            padding: 30px; text-align: center;
+        }
+        .modal-body i.spinner {
+            font-size: 3rem; color: var(--sol-green);
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(20, 241, 149, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(20, 241, 149, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(20, 241, 149, 0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .tok-wrapper { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 0; }
+            .timeline-item.right { left: 0; }
+            .timeline-item::after { left: 23px; right: auto; }
+            .right::after { left: 23px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-actions { flex-direction: column; max-width: 300px; margin: 0 auto 40px auto; }
+        }
+    </style>
 </head>
 <body>
 
-<div id="conf"></div>
-<div class="toast" id="toast">✓ Code Copied!</div>
+    <div id="particle-container"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
 
-<!-- Ambient orbs -->
-<div class="orb orb-a"></div>
-<div class="orb orb-b"></div>
-<div class="orb orb-c"></div>
-
-<!-- ══ HEADER ══ -->
-<header class="hdr">
-  <div class="hdr-inner">
-    <div class="logo">
-      <div class="logo-mark">📱</div>
-      <div class="logo-name">Win<span>Zone</span></div>
-    </div>
-    <div class="hdr-right">
-      <div class="spots-pill">⚡ <span id="spots">47</span> spots</div>
-      <div class="live-pill"><div class="live-dot"></div>LIVE</div>
-    </div>
-  </div>
-</header>
-
-<!-- ══ TICKER ══ -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span>🏆 Ahmed ne iPhone 17 Pro Max jeet liya</span>
-    <span>🎉 Sara Khan ne reward claim kiya</span>
-    <span>📱 iPhone 17 Pro Max — Sach mein milta hai</span>
-    <span>🔥 47 spots baaki hain — Jaldi karo</span>
-    <span>⚡ 17 dost invite karo — Phone tumhara</span>
-    <span>🏆 Ahmed ne iPhone 17 Pro Max jeet liya</span>
-    <span>🎉 Sara Khan ne reward claim kiya</span>
-    <span>📱 iPhone 17 Pro Max — Sach mein milta hai</span>
-    <span>🔥 47 spots baaki hain — Jaldi karo</span>
-    <span>⚡ 17 dost invite karo — Phone tumhara</span>
-  </div>
-</div>
-
-<div class="wrap">
-
-  <!-- ══════════════════════════
-       POSTER 1 — HERO
-  ══════════════════════════ -->
-  <div class="poster1">
-    <div class="poster1-bg"></div>
-    <div class="poster1-grid"></div>
-
-    <!-- Star particles via JS -->
-    <div class="stars" id="stars"></div>
-
-    <div class="p1-top-badge">
-      <span>✦</span> Official Giveaway 2025 <span>✦</span>
-    </div>
-
-    <!-- iPhone SVG -->
-    <div class="iphone-wrap">
-      <svg class="iphone-svg" viewBox="0 0 240 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Body -->
-        <rect x="8" y="8" width="224" height="464" rx="40" fill="url(#bodyGrad)" stroke="url(#edgeGrad)" stroke-width="2"/>
-        <!-- Side button shine -->
-        <rect x="230" y="120" width="6" height="60" rx="3" fill="#334"/>
-        <rect x="230" y="200" width="6" height="40" rx="3" fill="#334"/>
-        <rect x="4" y="120" width="6" height="40" rx="3" fill="#334"/>
-        <rect x="4" y="175" width="6" height="60" rx="3" fill="#334"/>
-        <rect x="4" y="250" width="6" height="60" rx="3" fill="#334"/>
-        <!-- Screen -->
-        <rect x="18" y="18" width="204" height="444" rx="32" fill="#000408"/>
-        <!-- Screen content glow -->
-        <rect x="18" y="18" width="204" height="444" rx="32" fill="url(#screenGlow)" opacity="0.6"/>
-        <!-- Dynamic island -->
-        <rect x="90" y="28" width="60" height="22" rx="11" fill="#000"/>
-        <!-- Screen icons -->
-        <circle cx="120" cy="200" r="50" fill="url(#appGlow)" opacity="0.15"/>
-        <text x="120" y="215" text-anchor="middle" font-size="60" dominant-baseline="middle">📱</text>
-        <!-- Status bar -->
-        <text x="36" y="52" fill="rgba(255,255,255,0.8)" font-size="11" font-family="sans-serif" font-weight="600">9:41</text>
-        <text x="196" y="52" fill="rgba(255,255,255,0.8)" font-size="11" font-family="sans-serif" text-anchor="end">●●● WiFi 🔋</text>
-        <!-- Bottom home area -->
-        <rect x="95" y="448" width="50" height="5" rx="2.5" fill="rgba(255,255,255,0.3)"/>
-        <!-- Triple camera -->
-        <rect x="50" y="30" width="60" height="60" rx="18" fill="#0a0a14"/>
-        <circle cx="72" cy="52" r="10" fill="#1a1a2e" stroke="#333" stroke-width="1.5"/>
-        <circle cx="72" cy="52" r="6" fill="#0a84ff" opacity="0.4"/>
-        <circle cx="72" cy="52" r="3" fill="#60b0ff"/>
-        <circle cx="88" cy="52" r="10" fill="#1a1a2e" stroke="#333" stroke-width="1.5"/>
-        <circle cx="88" cy="52" r="6" fill="#0a84ff" opacity="0.4"/>
-        <circle cx="88" cy="52" r="3" fill="#60b0ff"/>
-        <circle cx="72" cy="68" r="10" fill="#1a1a2e" stroke="#333" stroke-width="1.5"/>
-        <circle cx="72" cy="68" r="6" fill="#0a84ff" opacity="0.4"/>
-        <circle cx="72" cy="68" r="3" fill="#60b0ff"/>
-        <circle cx="88" cy="68" r="7" fill="#1a1a2e" stroke="#333" stroke-width="1"/>
-        <circle cx="88" cy="68" r="4" fill="#d4a843" opacity="0.5"/>
-        <circle cx="88" cy="68" r="2" fill="#f5cb5c"/>
-        <!-- Camera flash -->
-        <circle cx="62" cy="60" r="4" fill="#d4a843" opacity="0.6"/>
-        <defs>
-          <linearGradient id="bodyGrad" x1="0" y1="0" x2="240" y2="480" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#2a2a3e"/>
-            <stop offset="30%" stop-color="#1a1a28"/>
-            <stop offset="70%" stop-color="#22223a"/>
-            <stop offset="100%" stop-color="#1a1a2e"/>
-          </linearGradient>
-          <linearGradient id="edgeGrad" x1="0" y1="0" x2="240" y2="480" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
-            <stop offset="50%" stop-color="rgba(10,132,255,0.4)"/>
-            <stop offset="100%" stop-color="rgba(255,255,255,0.1)"/>
-          </linearGradient>
-          <linearGradient id="screenGlow" x1="120" y1="18" x2="120" y2="462" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#0a84ff" stop-opacity="0.15"/>
-            <stop offset="100%" stop-color="#0a84ff" stop-opacity="0"/>
-          </linearGradient>
-          <radialGradient id="appGlow" cx="50%" cy="50%">
-            <stop offset="0%" stop-color="#0a84ff"/>
-            <stop offset="100%" stop-color="transparent"/>
-          </radialGradient>
-        </defs>
-      </svg>
-    </div>
-
-    <div class="p1-model-tag">✦ iPhone 17 Pro Max ✦</div>
-    <div class="p1-title">
-      WIN THE<br>
-      <span class="accent">LATEST</span><br>
-      iPHONE
-    </div>
-    <p class="p1-sub">Sirf 17 doston ko invite karo aur iPhone 17 Pro Max apna kar lo — bilkul free, bilkul asaan!</p>
-
-    <div class="spec-chips">
-      <div class="spec-chip gold">📷 48MP Camera</div>
-      <div class="spec-chip gold">⚡ A19 Chip</div>
-      <div class="spec-chip">256GB</div>
-      <div class="spec-chip">5G</div>
-    </div>
-
-    <button class="p1-cta-btn" onclick="scrollToProgress()">🚀 Abhi Join Karo</button>
-
-    <div class="p1-bottom">
-      <div class="p1-stat">
-        <span class="p1-stat-n">12K+</span>
-        <span class="p1-stat-l">Joiners</span>
-      </div>
-      <div class="p1-stat">
-        <span class="p1-stat-n">47</span>
-        <span class="p1-stat-l">Spots Left</span>
-      </div>
-      <div class="p1-stat">
-        <span class="p1-stat-n">4.9★</span>
-        <span class="p1-stat-l">Rating</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ PROGRESS SECTION ══ -->
-  <div class="sec-head">
-    <div class="sec-line"></div>
-    <div class="sec-title">Your Progress</div>
-    <div class="sec-line"></div>
-  </div>
-
-  <div class="prog-section" id="progressSection">
-
-    <!-- Reward (hidden) -->
-    <div class="reward-box" id="rewardBox">
-      <span class="r-phone-emoji">📱</span>
-      <div class="r-title">
-        <span>iPhone 17 Pro Max</span><br>Aapka Hai! 🎉
-      </div>
-      <p class="r-sub">Mubarak ho! Aapne 17 invites complete kar liye. Neeche diya code copy karein aur hamein WhatsApp karein apna iPhone claim karne ke liye.</p>
-      <div class="r-code-wrap" onclick="copyCode()">
-        <div class="r-code">WIN-i17-PRO</div>
-        <div class="r-hint">TAP TO COPY · CLAIM WITHIN 48 HOURS</div>
-      </div>
-      <div class="r-iphone-specs">
-        <div class="r-spec">
-          <span class="r-spec-icon">📷</span>
-          <div class="r-spec-name">Camera</div>
-          <div class="r-spec-val">48MP Pro</div>
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo-area">
+                <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="logo-text">Sol<span>Pump</span></div>
+            </a>
+            <button class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem;" id="walletBtn" onclick="connectWallet()">
+                <i class="fa-solid fa-wallet"></i> Connect Wallet
+            </button>
         </div>
-        <div class="r-spec">
-          <span class="r-spec-icon">⚡</span>
-          <div class="r-spec-name">Chip</div>
-          <div class="r-spec-val">A19 Bionic</div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="badge"><i class="fa-solid fa-sparkles"></i> Solana Mainnet Live</div>
+            <h1>Claim Your <span>$PUMPDROP</span><br>Tokens Now</h1>
+            <p>The premium liquidity and launch multi-portal built exclusively for the high-velocity Solana Ecosystem. Verify your eligibility to claim your ecosystem airdrop allocation instantly.</p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="connectWallet()"><i class="fa-solid fa-rocket"></i> Claim Allocation</button>
+                <a href="#tokenomics" class="btn btn-secondary"><i class="fa-solid fa-chart-pie"></i> View Tokenomics</a>
+            </div>
         </div>
-        <div class="r-spec">
-          <span class="r-spec-icon">💾</span>
-          <div class="r-spec-name">Storage</div>
-          <div class="r-spec-val">256GB</div>
+    </section>
+
+    <section class="stats container">
+        <div class="stats-grid">
+            <div class="glass-card stat-card">
+                <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                <div class="stat-value">50,000,000</div>
+                <div class="stat-label">Airdrop Pool</div>
+            </div>
+            <div class="glass-card stat-card">
+                <i class="fa-solid fa-users"></i>
+                <div class="stat-value">142,520</div>
+                <div class="stat-label">Eligible Wallets</div>
+            </div>
+            <div class="glass-card stat-card">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <div class="stat-value" id="countdown">23h 59m 59s</div>
+                <div class="stat-label">Time Remaining</div>
+            </div>
+            <div class="glass-card stat-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div class="stat-value">Audited</div>
+                <div class="stat-label">By CertiK Security</div>
+            </div>
         </div>
-        <div class="r-spec">
-          <span class="r-spec-icon">🔋</span>
-          <div class="r-spec-name">Battery</div>
-          <div class="r-spec-val">All Day</div>
+    </section>
+
+    <section class="tokenomics container" id="tokenomics">
+        <h2 class="section-title">Transparent Tokenomics</h2>
+        <div class="tok-wrapper">
+            <div class="glass-card tok-info-card">
+                <div class="tok-row">
+                    <span class="tok-label">Token Name</span>
+                    <span class="tok-value" style="color: #fff;">SolPumpDrop</span>
+                </div>
+                <div class="tok-row">
+                    <span class="tok-label">Ticker Symbol</span>
+                    <span class="tok-value">$PUMPDROP</span>
+                </div>
+                <div class="tok-row">
+                    <span class="tok-label">Total Supply</span>
+                    <span class="tok-value" style="color: #fff;">1,000,000,000</span>
+                </div>
+                <div class="tok-row">
+                    <span class="tok-label">Network Architecture</span>
+                    <span class="tok-value">Solana SPL Standard</span>
+                </div>
+            </div>
+            <div class="chart-mockup">
+                <div class="chart-bar-wrapper">
+                    <div class="bar-label-group"><span>Public Airdrop Pool</span><strong>5%</strong></div>
+                    <div class="bar-bg"><div class="bar-fill" data-width="5%" style="background: var(--sol-green);"></div></div>
+                </div>
+                <div class="chart-bar-wrapper">
+                    <div class="bar-label-group"><span>Ecosystem Growth & Liquidity</span><strong>55%</strong></div>
+                    <div class="bar-bg"><div class="bar-fill" data-width="55%"></div></div>
+                </div>
+                <div class="chart-bar-wrapper">
+                    <div class="bar-label-group"><span>Community Rewards</span><strong>25%</strong></div>
+                    <div class="bar-bg"><div class="bar-fill" data-width="25%"></div></div>
+                </div>
+                <div class="chart-bar-wrapper">
+                    <div class="bar-label-group"><span>Core Contributors & Marketing</span><strong>15%</strong></div>
+                    <div class="bar-bg"><div class="bar-fill" data-width="15%"></div></div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <section class="roadmap">
+        <h2 class="section-title">Development Roadmap</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="glass-card timeline-content">
+                    <div class="timeline-phase">Phase 01</div>
+                    <h3>Launch Protocol Initialization</h3>
+                    <ul>
+                        <li>Smart Contract Security Auditing</li>
+                        <li>Genesis Snapshot Generation</li>
+                        <li>Portal Interface Release</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="glass-card timeline-content">
+                    <div class="timeline-phase">Phase 02</div>
+                    <h3>Distribution Wave</h3>
+                    <ul>
+                        <li>Live Automated Token Claims</li>
+                        <li>Raydium Liquidity Deployment</li>
+                        <li>CoinMarketCap Listing Tracks</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="glass-card timeline-content">
+                    <div class="timeline-phase">Phase 03</div>
+                    <h3>Ecosystem Expansion</h3>
+                    <ul>
+                        <li>Governance Portal Activation</li>
+                        <li>SolPump Launchpad Integration</li>
+                        <li>Cross-Chain Relays Built</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-wrapper">
+            <div class="faq-item">
+                <button class="faq-trigger">What criteria determines eligibility? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-content">Eligibility is dynamic, utilizing active wallet profiles interacting with mainstream decentralized exchanges, top-tier NFT projects, and staking protocols across the Solana ecosystem during the first half of 2026.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger">Is there a network fee involved? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-content">Only native Solana transaction gas network fees apply ($SOL), which typically amount to less than $0.0005 per execution.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger">When will trading go live officially? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-content">Liquidity pool allocations will automatically initialize on premium automated market makers (AMMs) like Raydium immediately following the conclusion of our current distribution phase.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <a href="#" class="logo-area">
+                    <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="logo-text">Sol<span>Pump</span></div>
+                </a>
+                <p>Empowering speed, decentralized growth, and deep liquid mechanisms inside the world's finest layer-1 network architecture.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Platform Navigation</h4>
+                <ul>
+                    <li><a href="#">Claim Allocation</a></li>
+                    <li><a href="#tokenomics">Tokenomics Grid</a></li>
+                    <li><a href="#">Legal Disclaimers</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Ecosystem Connections</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <div>&copy; 2026 SolPumpDrop Protocols. All Rights Reserved.</div>
+            <div>Powered by high-velocity Solana Architecture.</div>
+        </div>
+    </footer>
+
+    <div class="modal" id="walletModal">
+        <div class="glass-card modal-body">
+            <i class="fa-solid fa-circle-notch spinner"></i>
+            <h3 style="font-family: var(--font-heading); margin-bottom: 10px;">Establishing Handshake</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Securing tunnel to your native browser extension wallet...</p>
+        </div>
     </div>
 
-    <div class="prog-card" id="progCard">
-      <div class="prog-header">
-        <div>
-          <div class="prog-label-main">INVITE TRACKER</div>
-          <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:2px;" id="clicksLeft">17 clicks mein complete hoga</div>
-        </div>
-        <div class="prog-nums">
-          <div class="prog-pct-big" id="pctBig">0%</div>
-          <div class="prog-clicks-left" id="invDone">0 / 17 invites</div>
-        </div>
-      </div>
+    <script>
+        // Decorative Animated Particle Setup
+        const pContainer = document.getElementById('particle-container');
+        for (let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.backgroundColor = Math.random() > 0.5 ? '#14F195' : '#9945FF';
+            particle.style.width = `${Math.random() * 4 + 2}px`;
+            particle.style.height = particle.style.width;
+            particle.style.borderRadius = '50%';
+            particle.style.opacity = Math.random() * 0.4 + 0.1;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.transform = `translateY(0px)`;
+            
+            // Basic Keyframe Free Simulation Line
+            particle.animate([
+                { transform: 'translateY(0px) translateX(0px)' },
+                { transform: `translateY(-${Math.random() * 80 + 20}px) translateX(${Math.random() * 40 - 20}px)` }
+            ], {
+                duration: Math.random() * 4000 + 3000,
+                iterations: Infinity,
+                direction: 'alternate',
+                easing: 'ease-in-out'
+            });
+            pContainer.appendChild(particle);
+        }
 
-      <!-- 17 dot indicators -->
-      <div class="step-indicators" id="dotRow"></div>
+        // Animated Sequential Tokenomics Bar Loading
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.bar-fill');
+                    bars.forEach(bar => {
+                        bar.style.width = bar.getAttribute('data-width');
+                    });
+                }
+            });
+        }, { threshold: 0.2 });
+        observer.observe(document.querySelector('.tokenomics'));
 
-      <div class="prog-track">
-        <div class="prog-fill" id="progFill"></div>
-      </div>
+        // Elegant Accordion Mechanism
+        document.querySelectorAll('.faq-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.parentElement;
+                const content = item.querySelector('.faq-content');
+                const isActive = item.classList.contains('active');
+                
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-content').style.maxHeight = null;
+                });
 
-      <div class="mile-row">
-        <div class="mile" id="m0">0</div>
-        <div class="mile" id="m25">25%</div>
-        <div class="mile" id="m50">50%</div>
-        <div class="mile" id="m75">75%</div>
-        <div class="mile" id="m100">🏆</div>
-      </div>
+                if (!isActive) {
+                    item.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
 
-      <div class="btn-stack">
-        <button class="btn btn-blue" id="checkBtn" onclick="checkProgress()">
-          <span>📊</span><span>Check Progress</span>
-        </button>
-        <a class="btn btn-wa" onclick="shareWA(event)" href="#">
-          <span>💬</span><span>Share on WhatsApp</span>
-        </a>
-      </div>
-    </div>
-  </div>
+        // Synthetic Clock Countdown Controller
+        let duration = 24 * 60 * 60; 
+        const timerDisplay = document.getElementById('countdown');
+        setInterval(() => {
+            duration--;
+            if (duration <= 0) duration = 24 * 60 * 60;
+            const hrs = String(Math.floor(duration / 3600)).padStart(2, '0');
+            const mins = String(Math.floor((duration % 3600) / 60)).padStart(2, '0');
+            const secs = String(duration % 60).padStart(2, '0');
+            timerDisplay.textContent = `${hrs}h ${mins}m ${secs}s`;
+        }, 1000);
 
-  <!-- ══ URGENCY ══ -->
-  <div class="urgency-card">
-    <div class="urgency-icon">⏰</div>
-    <div class="urgency-text">
-      <div class="u-title">Offer khatam hone mein sirf:</div>
-      <div class="u-timer" id="countdownTimer">23:47:12</div>
-      <div class="u-sub">Baad mein aana band ho jayega — Abhi shuru karo!</div>
-    </div>
-  </div>
-
-  <!-- ══ POSTER 2 ══ -->
-  <div class="sec-head">
-    <div class="sec-line"></div>
-    <div class="sec-title">How To Win</div>
-    <div class="sec-line"></div>
-  </div>
-
-  <div class="poster2-wrap">
-    <div class="poster2">
-      <div class="poster2-bg"></div>
-      <div class="poster2-grid"></div>
-
-      <div class="p2-top-badge">📱 Step By Step Guide</div>
-
-      <div class="p2-icon-row">
-        <div class="p2-big-icon">🔗</div>
-        <div style="font-size:28px;color:rgba(255,255,255,0.2)">→</div>
-        <div class="p2-big-icon">👥</div>
-        <div style="font-size:28px;color:rgba(255,255,255,0.2)">→</div>
-        <div class="p2-big-icon">📱</div>
-      </div>
-
-      <div class="p2-title">
-        Sirf <span class="gold-txt">17 Invites</span><br>
-        iPhone Tumhara!
-      </div>
-      <p class="p2-sub">Jitna zyada share karoge, utna jaldi reward milega. Har dost ek step aage le jaata hai!</p>
-
-      <div class="invites-needed">
-        📊 17 Invites = 1 iPhone 17 Pro Max
-      </div>
-
-      <div class="p2-steps">
-        <div class="p2-step">
-          <div class="p2-step-num">01</div>
-          <div class="p2-step-icon">🔗</div>
-          <div class="p2-step-body">
-            <strong>Link Copy Karo Ya Share Karo</strong>
-            <span>WhatsApp button dabao — ready-made message jayega tumhare sab contacts ko</span>
-          </div>
-        </div>
-        <div class="p2-step">
-          <div class="p2-step-num">02</div>
-          <div class="p2-step-icon">👥</div>
-          <div class="p2-step-body">
-            <strong>17 Dost Join Karein</strong>
-            <span>Har join par progress bar barhti hai — real-time tracking hota hai</span>
-          </div>
-        </div>
-        <div class="p2-step">
-          <div class="p2-step-num">03</div>
-          <div class="p2-step-icon">📊</div>
-          <div class="p2-step-body">
-            <strong>Progress Check Karo</strong>
-            <span>"Check Progress" dabaao — 17 baar dabane par 100% ho jayega</span>
-          </div>
-        </div>
-        <div class="p2-step">
-          <div class="p2-step-num">04</div>
-          <div class="p2-step-icon">🏆</div>
-          <div class="p2-step-body">
-            <strong>iPhone Claim Karo!</strong>
-            <span>Code milega — WhatsApp pe bhejo aur apna iPhone 17 Pro Max le lo</span>
-          </div>
-        </div>
-      </div>
-
-      <button class="p2-cta" onclick="shareWA(event)">💬 Abhi WhatsApp Pe Share Karo</button>
-
-      <div class="poster2-bottom">
-        <div class="p2-stat">
-          <span class="p2-stat-n">FREE</span>
-          <span class="p2-stat-l">Bilkul Free</span>
-        </div>
-        <div class="p2-stat">
-          <span class="p2-stat-n">17</span>
-          <span class="p2-stat-l">Invites Chahiye</span>
-        </div>
-        <div class="p2-stat">
-          <span class="p2-stat-n">48HR</span>
-          <span class="p2-stat-l">Claim Karo</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ URDU COMMENTS ══ -->
-  <div class="sec-head">
-    <div class="sec-line"></div>
-    <div class="sec-title">Logon Ki Rai</div>
-    <div class="sec-line"></div>
-  </div>
-
-  <div class="comments-wrap">
-    <div class="comments-head">💬 User Reviews</div>
-    <div class="comments-sub">Jinhonn ne already reward claim kiya — unhi ki zabaan mein</div>
-
-    <!-- Comment 1 -->
-    <div class="comment">
-      <div class="c-top">
-        <div class="c-av" style="background:linear-gradient(135deg,#0a84ff,#34aaff);border-radius:12px;">A</div>
-        <div class="c-info">
-          <div class="c-name">Ahmed Raza</div>
-          <div class="c-stars">★★★★★</div>
-          <div class="c-time">2 ghante pehle • Lahore</div>
-        </div>
-        <div class="c-badge">✓ Verified Winner</div>
-      </div>
-      <div class="c-urdu">
-        یار یقین نہیں آ رہا تھا لیکن سچ میں iPhone 17 Pro Max مل گیا! میں نے اپنے کالج کے دوستوں کو share کیا، 17 نے join کیا اور اگلے دن delivery آ گئی۔ بالکل legit ہے، سب کو ضرور try کرنا چاہیے! 🏆
-      </div>
-      <div class="c-reward">📱 iPhone 17 Pro Max — Received</div>
-    </div>
-
-    <!-- Comment 2 -->
-    <div class="comment">
-      <div class="c-top">
-        <div class="c-av" style="background:linear-gradient(135deg,#d4a843,#f5cb5c);border-radius:12px;">S</div>
-        <div class="c-info">
-          <div class="c-name">Sara Khan</div>
-          <div class="c-stars">★★★★★</div>
-          <div class="c-time">5 ghante pehle • Karachi</div>
-        </div>
-        <div class="c-badge">✓ Verified Winner</div>
-      </div>
-      <div class="c-urdu">
-        پہلے مجھے بھی شک تھا، سوچا fake ہو گا۔ لیکن جب میری سہیلی نے مجھے progress bar دکھائی اور پھر اس کا iPhone آیا تو میں نے بھی فوری start کیا۔ 3 دنوں میں میرا بھی آ گیا! واقعی amazing program ہے۔ ❤️
-      </div>
-      <div class="c-reward">📱 iPhone 17 Pro Max — Received</div>
-    </div>
-
-    <!-- Comment 3 -->
-    <div class="comment">
-      <div class="c-top">
-        <div class="c-av" style="background:linear-gradient(135deg,#30d158,#0a84ff);border-radius:12px;">M</div>
-        <div class="c-info">
-          <div class="c-name">Muhammad Ali</div>
-          <div class="c-stars">★★★★★</div>
-          <div class="c-time">1 din pehle • Islamabad</div>
-        </div>
-        <div class="c-badge">✓ Verified Winner</div>
-      </div>
-      <div class="c-urdu">
-        بہت آسان system ہے۔ WhatsApp پر link send کیا، دوستوں نے join کیا، progress bar خود بخود بھرتی گئی۔ جب 100% ہوئی تو code آیا، code send کیا اور 2 دن میں iPhone گھر پہنچ گیا۔ الحمد للہ! 🤲
-      </div>
-      <div class="c-reward">📱 iPhone 17 Pro Max — Received</div>
-    </div>
-
-    <!-- Comment 4 -->
-    <div class="comment">
-      <div class="c-top">
-        <div class="c-av" style="background:linear-gradient(135deg,#ff6b35,#ff3b30);border-radius:12px;">F</div>
-        <div class="c-info">
-          <div class="c-name">Fatima Noor</div>
-          <div class="c-stars">★★★★★</div>
-          <div class="c-time">2 din pehle • Faisalabad</div>
-        </div>
-        <div class="c-badge">✓ Verified Winner</div>
-      </div>
-      <div class="c-urdu">
-        میری پوری family نے مل کر یہ کیا۔ میں نے، میری بہن نے، میرے بھائی نے — سب نے اپنے اپنے دوستوں کو invite کیا۔ صرف 2 دن میں target پورا ہو گیا! یہ program بالکل real ہے، کوئی فراڈ نہیں۔ 💪
-      </div>
-      <div class="c-reward">📱 iPhone 17 Pro Max — Received</div>
-    </div>
-
-    <!-- Comment 5 -->
-    <div class="comment">
-      <div class="c-top">
-        <div class="c-av" style="background:linear-gradient(135deg,#bf5af2,#ff6cef);border-radius:12px;">U</div>
-        <div class="c-info">
-          <div class="c-name">Usman Tariq</div>
-          <div class="c-stars">★★★★★</div>
-          <div class="c-time">3 din pehle • Rawalpindi</div>
-        </div>
-        <div class="c-badge">✓ Verified Winner</div>
-      </div>
-      <div class="c-urdu">
-        بھائی سچ کہوں تو پہلے میں نے سوچا کہ یہ بھی باقی fake giveaways جیسا ہو گا۔ لیکن progress bar real-time میں update ہوتی دیکھ کر یقین آیا۔ اب میرے ہاتھ میں iPhone 17 Pro Max ہے — Masha Allah! سب کو recommend کرتا ہوں۔ 🌟
-      </div>
-      <div class="c-reward">📱 iPhone 17 Pro Max — Received</div>
-    </div>
-
-    <!-- Comment 6 -->
-    <div class="comment">
-      <div class="c-top">
-        <div class="c-av" style="background:linear-gradient(135deg,#34aaff,#30d158);border-radius:12px;">Z</div>
-        <div class="c-info">
-          <div class="c-name">Zara Malik</div>
-          <div class="c-stars">★★★★★</div>
-          <div class="c-time">4 din pehle • Multan</div>
-        </div>
-        <div class="c-badge">✓ Verified Winner</div>
-      </div>
-      <div class="c-urdu">
-        جب سے iPhone 17 Pro Max ملا ہے، اب تصویریں کھینچنا ہی نہیں چھوٹتا! 48MP camera واقعی کمال کا ہے۔ یہ program 100% genuine ہے۔ میری تمام سہیلیوں نے بھی join کر لیا ہے۔ آپ بھی دیر نہ کریں! 📸
-      </div>
-      <div class="c-reward">📱 iPhone 17 Pro Max — Received</div>
-    </div>
-
-  </div>
-
-</div><!-- /wrap -->
-
-<!-- ══ FOOTER ══ -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <div class="fl-mark">📱</div>
-      <div class="fl-name">Win<span>Zone</span></div>
-    </div>
-    <p class="footer-desc">Pakistan ka #1 invite & win program. Hazaron logon ne already apne iPhone 17 Pro Max claim kar liye hain. Aap bhi abhi shuru karein!</p>
-
-    <div class="footer-socials">
-      <div class="s-icon">📘</div>
-      <div class="s-icon">📸</div>
-      <div class="s-icon">🐦</div>
-      <div class="s-icon">▶️</div>
-      <div class="s-icon">💬</div>
-    </div>
-
-    <div class="footer-links">
-      <a href="#" class="footer-link">Home</a>
-      <a href="#" class="footer-link">How It Works</a>
-      <a href="#" class="footer-link">Winners</a>
-      <a href="#" class="footer-link">Terms & Conditions</a>
-      <a href="#" class="footer-link">Privacy Policy</a>
-      <a href="#" class="footer-link">Contact</a>
-      <a href="#" class="footer-link">FAQs</a>
-      <a href="#" class="footer-link">WhatsApp Support</a>
-    </div>
-
-    <div class="footer-div"></div>
-
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2025 WinZone. All rights reserved.</div>
-      <div class="footer-trust">
-        <div class="f-trust-badge">🔒 SECURE</div>
-        <div class="f-trust-badge">✅ REAL</div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- ══ STICKY CTA ══ -->
-<div class="sticky" id="stickyCta">
-  <button class="btn btn-blue" onclick="checkProgress()" style="flex:1">📊 Check Progress</button>
-  <a class="btn btn-wa" onclick="shareWA(event)" href="#" style="flex:1">💬 Share</a>
-</div>
-
-<script>
-/* ── CONFIG ── */
-const TOTAL_CLICKS = 17;
-const PCT_PER_CLICK = 100 / TOTAL_CLICKS; // 5.882...%
-
-let clicks = 0;
-let rewarded = false;
-
-const progFill   = document.getElementById('progFill');
-const pctBig     = document.getElementById('pctBig');
-const invDone    = document.getElementById('invDone');
-const clicksLeft = document.getElementById('clicksLeft');
-const rewardBox  = document.getElementById('rewardBox');
-const checkBtn   = document.getElementById('checkBtn');
-
-/* ── BUILD 17 DOTS ── */
-const dotRow = document.getElementById('dotRow');
-for(let i=0;i<TOTAL_CLICKS;i++){
-  const d = document.createElement('div');
-  d.className='step-dot';
-  d.id='dot'+i;
-  dotRow.appendChild(d);
-}
-
-/* ── STARS ── */
-const starsEl = document.getElementById('stars');
-for(let i=0;i<60;i++){
-  const s = document.createElement('div');
-  s.className='star';
-  const sz = Math.random()*2.5+0.5;
-  s.style.cssText=`
-    left:${Math.random()*100}%;
-    top:${Math.random()*100}%;
-    width:${sz}px;height:${sz}px;
-    --d:${2+Math.random()*4}s;
-    --delay:${Math.random()*4}s;
-    --op1:${0.4+Math.random()*0.6};
-    --op2:${0.1+Math.random()*0.2};
-  `;
-  starsEl.appendChild(s);
-}
-
-/* ── CHECK PROGRESS ── */
-function checkProgress(){
-  if(clicks >= TOTAL_CLICKS){
-    rewardBox.style.animation='none';
-    void rewardBox.offsetWidth;
-    rewardBox.style.animation='rewardPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both';
-    return;
-  }
-
-  clicks++;
-  const pct = Math.min(100, Math.round(clicks * PCT_PER_CLICK));
-  const remaining = TOTAL_CLICKS - clicks;
-
-  /* fill bar */
-  progFill.style.width = (clicks/TOTAL_CLICKS*100) + '%';
-
-  /* pct display */
-  pctBig.textContent = pct + '%';
-  if(pct >= 100) pctBig.style.color = '#30d158';
-
-  /* sub texts */
-  invDone.textContent = clicks + ' / ' + TOTAL_CLICKS + ' invites';
-  if(remaining > 0){
-    clicksLeft.textContent = remaining + ' clicks aur baaki hain';
-  } else {
-    clicksLeft.textContent = 'Sab complete! 🎉';
-  }
-
-  /* light dot */
-  const dot = document.getElementById('dot'+(clicks-1));
-  if(dot) dot.classList.add('active');
-
-  /* milestones */
-  if(pct >= 25) document.getElementById('m25').classList.add('lit');
-  if(pct >= 50) document.getElementById('m50').classList.add('lit');
-  if(pct >= 75) document.getElementById('m75').classList.add('lit');
-  if(pct >= 100){
-    document.getElementById('m100').classList.add('lit');
-    document.getElementById('m0').classList.add('lit');
-  }
-
-  /* button text update */
-  if(remaining > 0 && remaining <= 5){
-    checkBtn.innerHTML = '<span>🔥</span><span>Sirf ' + remaining + ' aur! Check Progress</span>';
-  }
-
-  /* reward unlock */
-  if(clicks === TOTAL_CLICKS && !rewarded){
-    rewarded = true;
-    checkBtn.innerHTML = '<span>🏆</span><span>Reward Claim Karo!</span>';
-    checkBtn.style.background = 'linear-gradient(135deg,#30d158,#25d366)';
-    setTimeout(()=>{
-      rewardBox.classList.add('show');
-      rewardBox.scrollIntoView({behavior:'smooth',block:'center'});
-      launchConfetti();
-    }, 600);
-  }
-}
-
-/* ── SCROLL TO PROGRESS ── */
-function scrollToProgress(){
-  document.getElementById('progressSection').scrollIntoView({behavior:'smooth'});
-}
-
-/* ── WHATSAPP ── */
-function shareWA(e){
-  if(e) e.preventDefault();
-  const url = window.location.href;
-  const msg = encodeURIComponent(
-    '📱 *Yaar! iPhone 17 Pro Max FREE mein milta hai!*\n\n'+
-    '🏆 Sirf 17 doston ko invite karo aur iPhone 17 Pro Max ghar le jao — bilkul genuine hai!\n\n'+
-    '✅ Maine khud try kiya — progress bar real-time mein barhti hai\n'+
-    '✅ Hazaron log pehle se le chuke hain\n'+
-    '✅ Bilkul free, koi hidden charges nahi\n\n'+
-    '🔗 Join karo abhi:\n'+url+'\n\n'+
-    '⏰ Limited spots baaki hain — der na karo!'
-  );
-  window.open('https://wa.me/?text='+msg,'_blank');
-}
-
-/* ── COPY CODE ── */
-function copyCode(){
-  navigator.clipboard.writeText('WIN-i17-PRO').catch(()=>{});
-  const t = document.getElementById('toast');
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 2200);
-}
-
-/* ── COUNTDOWN ── */
-let secs = 23*3600+47*60+12;
-setInterval(()=>{
-  if(secs<=0)return;
-  secs--;
-  const h=Math.floor(secs/3600);
-  const m=Math.floor((secs%3600)/60);
-  const s=secs%60;
-  const el=document.getElementById('countdownTimer');
-  if(el) el.textContent=
-    String(h).padStart(2,'0')+':'+
-    String(m).padStart(2,'0')+':'+
-    String(s).padStart(2,'0');
-},1000);
-
-/* ── SPOTS COUNTER ── */
-let spots=47;
-setInterval(()=>{
-  if(spots>10&&Math.random()>0.55){
-    spots-=Math.floor(Math.random()*2)+1;
-    const el=document.getElementById('spots');
-    if(el) el.textContent=spots;
-    // update ticker too
-    document.querySelectorAll('.ticker-inner span').forEach(s=>{
-      if(s.textContent.includes('spots baaki'))
-        s.textContent='🔥 '+spots+' spots baaki hain — Jaldi karo';
-    });
-  }
-},9000);
-
-/* ── STICKY ── */
-window.addEventListener('scroll',()=>{
-  document.getElementById('stickyCta').classList.toggle('show',window.scrollY>200);
-},{passive:true});
-
-/* ── CONFETTI ── */
-function launchConfetti(){
-  const wrap=document.getElementById('conf');
-  wrap.classList.add('on');
-  wrap.innerHTML='';
-  const colors=['#0a84ff','#34aaff','#d4a843','#f5cb5c','#fff','#30d158','#bf5af2','#ff6b35'];
-  for(let i=0;i<90;i++){
-    const c=document.createElement('div');
-    c.className='cf';
-    const sz=6+Math.random()*10;
-    c.style.cssText=
-      `left:${Math.random()*100}vw;`+
-      `width:${sz}px;height:${sz}px;`+
-      `background:${colors[Math.floor(Math.random()*colors.length)]};`+
-      `border-radius:${Math.random()>.5?'50%':'3px'};`+
-      `animation-duration:${1+Math.random()*1.2}s;`+
-      `animation-delay:${Math.random()*0.7}s;`;
-    wrap.appendChild(c);
-  }
-  setTimeout(()=>{wrap.classList.remove('on');wrap.innerHTML='';},3000);
-}
-</script>
+        // Simulated Web3 Wallet Handshake Routine
+        function connectWallet() {
+            const m = document.getElementById('walletModal');
+            m.classList.add('active');
+            setTimeout(() => {
+                m.classList.remove('active');
+                const btn = document.getElementById('walletBtn');
+                btn.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--sol-green)"></i> sol...4x9f`;
+                alert('Wallet Simulated Successfully! Eligible Allocation Found: 7,500 $PUMPDROP');
+            }, 1800);
+        }
+    </script>
 </body>
 </html>
